@@ -8,6 +8,7 @@
     lua-language-server
     nil # Nix LSP
     alejandra # Nix formatter
+    pyright
   ];
 
   programs.neovim = {
@@ -36,7 +37,7 @@
       pkgs.vimPlugins.indent-blankline-nvim
       pkgs.vimPlugins.noice-nvim
       pkgs.vimPlugins.onedark-nvim
-      pkgs.vimPlugins.null-ls-nvim
+      pkgs.vimPlugins.none-ls-nvim
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.crates-nvim
     ];
