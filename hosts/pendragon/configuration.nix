@@ -53,13 +53,5 @@
     LC_TIME = systemSettings.locale;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "usb" ];
-    packages = with pkgs; [];
-  };
-
   system.stateVersion = "24.05"; # Did you read the comment?
 }

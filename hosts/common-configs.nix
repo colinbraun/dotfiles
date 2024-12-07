@@ -1,13 +1,32 @@
-{ pkgs, ... }:
-
 {
-
+  pkgs,
+  userSettings,
+  ...
+}: {
   imports = [
     ../system/modules/fhs-compat.nix # nix-ld for running downloaded elfs
   ];
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.${userSettings.username} = {
+    isNormalUser = true;
+    description = userSettings.name;
+    extraGroups = ["networkmanager" "wheel" "usb" "uinput"];
+    packages = with pkgs; [];
+  };
+
+  # Setup udev rules for all kinds of devices
+  services = {
+    udev = {
+      packages = with pkgs; [
+        game-devices-udev-rules
+      ];
+    };
+  };
+  hardware.uinput.enable = true;
+
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -38,11 +57,9 @@
   };
 
   # Make zsh the default
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
   # Some programs try to enable this heavy accessibility option, disable it.
   services.speechd.enable = false;
-
 }
-

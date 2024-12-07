@@ -1,16 +1,18 @@
-{ config, pkgs, userSettings, systemSettings, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../common-configs.nix
-      ../../system/custom/wii-u-gc-adapter.nix
-      ../../system/network/network.nix
-      (./. + "../../../system/wm"+("/"+userSettings.wm)+".nix")
-      # ../../system/style/stylix.nix
-    ];
-
+  config,
+  pkgs,
+  userSettings,
+  systemSettings,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+    ../common-configs.nix
+    ../../system/modules/bluetooth.nix
+    ../../system/custom/wii-u-gc-adapter.nix
+    ../../system/network/network.nix
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
+  ];
 
   networking.hostName = "electro-nixos";
 
@@ -55,15 +57,7 @@
     LC_TIME = systemSettings.locale;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "usb" ];
-    packages = with pkgs; [];
-  };
-
-  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedTCPPorts = [25565];
 
   # DO NOT CHANGE. READ DOCUMENTATION FIRST. THIS IS NOT THE SYSTEM VERSION
   system.stateVersion = "23.11";
