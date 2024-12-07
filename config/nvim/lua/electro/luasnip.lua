@@ -16,10 +16,10 @@ local function stepper(step_size)
   return function() luasnip.jump(step_size) end
 end
 
-WK.add({
-  { "<tab>",   stepper(1),     desc = "next snippet gap",     mode = { "s", "i", }, },
-  { "<s-tab>", stepper(-1),    desc = "previous snippet gap", mode = { "s", "i", }, },
-  { "<c-a>",   choice(1),      desc = "next choice",          mode = { "s", "i", }, },
-  { "<c-s>",   choice(-1),     desc = "previous choice",      mode = { "s", "i", }, },
-  { "<c-e>",   luasnip.expand, desc = "expand snippet",       mode = "s", },
-})
+-- WK.add({
+--   { "<tab>",   stepper(1),     desc = "next snippet gap",     mode = { "s", "i", }, },
+--   { "<s-tab>", stepper(-1),    desc = "previous snippet gap", mode = { "s", "i", }, },
+--   { "<c-a>",   choice(1),      desc = "next choice",          mode = { "s", "i", }, },
+--   { "<c-s>",   choice(-1),     desc = "previous choice",      mode = { "s", "i", }, },
+--   { "<c-e>",   luasnip.expand, desc = "expand snippet",       mode = "s", },
+-- })

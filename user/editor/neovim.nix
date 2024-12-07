@@ -40,6 +40,7 @@
       pkgs.vimPlugins.none-ls-nvim
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.crates-nvim
+      pkgs.vimPlugins.vim-tmux-navigator
     ];
   };
 }
