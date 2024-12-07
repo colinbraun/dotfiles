@@ -1,8 +1,7 @@
 {
   description = "Electro's Flake";
 
-  outputs = inputs@{ self, ... }:
-  let
+  outputs = inputs @ {self, ...}: let
     # SYSTEM SETTINGS
     systemSettings = {
       system = "x86_64-linux";
@@ -31,12 +30,11 @@
     };
 
     home-manager = inputs.home-manager;
-  in
-  {
+  in {
     nixosConfigurations = {
       electro-nixos = lib.nixosSystem {
         system = systemSettings.system;
-        modules = [ ./hosts/electro-nixos/configuration.nix ];
+        modules = [./hosts/electro-nixos/configuration.nix];
         specialArgs = {
           inherit systemSettings;
           inherit userSettings;
@@ -60,7 +58,7 @@
     homeConfigurations = {
       "electro@electro-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        modules = [ ./hosts/electro-nixos/home.nix ];
+        modules = [./hosts/electro-nixos/home.nix];
         extraSpecialArgs = {
           inherit systemSettings;
           inherit userSettings;
@@ -82,25 +80,15 @@
   };
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-      # url = "github:nix-community/nixvim/nixos-23.05";
+    # sops-nix.url = "github:Mic92/sops-nix";
+    # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    suyu.url = "git+https://git.suyu.dev/suyu/nix-flake";
-    suyu.inputs.nixpkgs.follows = "nixpkgs"; # optional, saves space, recommended
+    # suyu.url = "git+https://git.suyu.dev/suyu/nix-flake";
+    # suyu.inputs.nixpkgs.follows = "nixpkgs";
   };
 }
-
