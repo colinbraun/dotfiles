@@ -42,6 +42,7 @@
   home.packages = with pkgs; [
     nh # Nix cli helper
     jdk17
+    antimicrox
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
