@@ -75,7 +75,7 @@ in {
       # should already be setup by HM.
       source ${pkgs.fzf}/share/fzf/key-bindings.zsh
       source ${pkgs.fzf}/share/fzf/completion.zsh
-      source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+      # source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
       source ~/.p10k.zsh
 
       HISTSIZE=10000
@@ -94,8 +94,8 @@ in {
       zstyle ':completion:*' list-colors "''\${(s.:.)LS_COLORS}" # Colore tab-complete
       # REMOVE THESE 3 IF ZSH-FZF-TAB IS NOT INSTALLED
       zstyle ':completion:*' menu no
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-      zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+      # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+      # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
       bindkey '^[OA' history-search-backward   # Up
       bindkey '^[[A' history-search-backward   # Up
