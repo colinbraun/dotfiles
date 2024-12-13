@@ -9,7 +9,7 @@
     ../../user/app/vlc/vlc.nix
     # ../../user/eda/verilator.nix
     ../../user/editor/neovim.nix
-    # ../../user/games/retroarch.nix
+    ../../user/games/retroarch.nix
     # ../../user/games/lutris.nix
     # ../../user/games/suyu.nix
     ../../user/lang/cc.nix

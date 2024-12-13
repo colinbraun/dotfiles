@@ -1,14 +1,11 @@
-{ pkgs, ... }:
-
-{
-  home.packages = with pkgs; [
-    (retroarch.override {
-      cores = with libretro; [
-        snes9x
-        dolphin
+{pkgs, ...}: {
+  home.packages = [
+    (pkgs.retroarch.withCores (cores:
+      with cores; [
+        mgba
         mupen64plus
-      ];
-    })
+        dolphin
+        snes9x
+      ]))
   ];
 }
-
