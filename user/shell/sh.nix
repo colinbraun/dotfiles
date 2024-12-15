@@ -95,7 +95,7 @@ in {
       setopt hist_find_no_dups
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Case-insensitive tab-complete
-      zstyle ':completion:*' list-colors "''\${s.:. LS_COLORS}" # Colored tab-complete
+      zstyle ':completion:*' list-colors "''\${(s.:.)LS_COLORS}" # Colored tab-complete
       zstyle ':completion:*' menu select # Make tab-complete cycling highlight the item
       # REMOVE THESE 3 IF ZSH-FZF-TAB IS NOT INSTALLED
       # zstyle ':completion:*' menu no
