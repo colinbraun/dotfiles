@@ -41,7 +41,7 @@
   # environment.
   home.packages = with pkgs; [
     nh # Nix cli helper
-    jdk17
+    jdk21
     antimicrox
   ];
 
