@@ -24,6 +24,8 @@
     gstal = "git stash list";
     gstap = "git stash pop";
     grep = "grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}";
+    history = "history 0";
+    h = "history";
     l = "ls -lah";
     la = "ls -Ah";
     ll = "ls -lh";
