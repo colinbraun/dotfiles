@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     kitty
   ];
@@ -9,4 +11,3 @@
     background_opacity = lib.mkForce "0.66";
   };
 }
-

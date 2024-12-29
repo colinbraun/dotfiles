@@ -1,37 +1,37 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
-    (python3.withPackages (
-      ps:
-        with ps; [
-          # IDE
-          jupyterlab
-          ipython
-          ipykernel
+    (
+      python3.withPackages (
+        ps:
+          with ps; [
+            # IDE
+            jupyterlab
+            ipython
+            ipykernel
 
-          # Spyder IDE
-          # spyder
-          # spyder-kernels
+            # Spyder IDE
+            # spyder
+            # spyder-kernels
 
-          # DS
-          matplotlib
-          numpy
-          plotly
-          # scikit-learn-extra
-          scipy
-          seaborn
+            # DS
+            matplotlib
+            numpy
+            plotly
+            # scikit-learn-extra
+            scipy
+            seaborn
 
-          # probabilistic
-          # pymc
+            # probabilistic
+            # pymc
 
-          # formatter
-          black
+            # formatter
+            black
 
-          # other
-          # virtualenv
-        ])
+            # other
+            # virtualenv
+          ]
+      )
     )
     poetry
   ];
 }
-

@@ -1,11 +1,10 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Import wayland config
-  imports = [ ./wayland.nix
-              ./pipewire.nix
-              ./dbus.nix
-            ];
+  imports = [
+    ./wayland.nix
+    ./pipewire.nix
+    ./dbus.nix
+  ];
 
   # Security
   security = {
@@ -29,4 +28,3 @@
     };
   };
 }
-

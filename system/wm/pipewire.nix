@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   # Pipewire
   # sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -18,4 +16,3 @@
     pulseaudioFull
   ];
 }
-

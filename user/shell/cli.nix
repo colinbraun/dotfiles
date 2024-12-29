@@ -1,7 +1,5 @@
 # Command line tools
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     btop
     fastfetch
@@ -15,4 +13,3 @@
     gpg.enable = true;
   };
 }
-

@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   gtk = {
     enable = true;
     theme = {
@@ -18,4 +20,3 @@
 
   home.sessionVariables.GTK_THEME = config.gtk.theme.name; # for gtk4
 }
-

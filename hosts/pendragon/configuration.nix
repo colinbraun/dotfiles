@@ -1,17 +1,21 @@
-{ config, pkgs, userSettings, systemSettings, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../common-configs.nix
-      ../common-graphical-configs.nix
-      ../../system/custom/wii-u-gc-adapter.nix
-      ../../system/network/network.nix
-      ../../system/steam.nix
-      (./. + "../../../system/wm"+("/"+userSettings.wm)+".nix")
-      # ../../system/style/stylix.nix
-    ];
+  config,
+  pkgs,
+  userSettings,
+  systemSettings,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../common-configs.nix
+    ../common-graphical-configs.nix
+    ../../system/custom/wii-u-gc-adapter.nix
+    ../../system/network/network.nix
+    ../../system/steam.nix
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
+    # ../../system/style/stylix.nix
+  ];
 
   networking.hostName = "pendragon";
 

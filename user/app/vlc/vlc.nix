@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     vlc
   ];
@@ -9,4 +7,3 @@
     "video/mp4" = "vlc.desktop";
   };
 }
-

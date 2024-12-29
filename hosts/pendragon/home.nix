@@ -1,9 +1,13 @@
-{ config, pkgs, userSettings, ... }:
 {
+  config,
+  pkgs,
+  userSettings,
+  ...
+}: {
   imports = [
-    (./. + "../../../user/wm"+("/"+userSettings.wm)+".nix") # My window manager selected from flake
-    (./. + "../../../user/app/browser"+("/"+userSettings.browser)+".nix") # My default browser
-    (./. + "../../../user/app/file-manager"+("/"+userSettings.fileManager)+".nix") # My file manager
+    (./. + "../../../user/wm" + ("/" + userSettings.wm) + ".nix") # My window manager selected from flake
+    (./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix") # My default browser
+    (./. + "../../../user/app/file-manager" + ("/" + userSettings.fileManager) + ".nix") # My file manager
     ../../user/app/messaging/discord.nix
     ../../user/app/obs/obs.nix
     ../../user/app/vlc/vlc.nix
@@ -25,7 +29,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = userSettings.username;
-  home.homeDirectory = "/home/"+userSettings.username;
+  home.homeDirectory = "/home/" + userSettings.username;
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
@@ -83,7 +87,6 @@
   };
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-
 
   home.sessionVariables = {
     EDITOR = userSettings.editor;
