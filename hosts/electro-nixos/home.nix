@@ -19,6 +19,7 @@
     ../../user/shell/direnv.nix
     ../../user/shell/sh.nix
     ../../user/style/my-style.nix
+    ../../user/udiskie.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

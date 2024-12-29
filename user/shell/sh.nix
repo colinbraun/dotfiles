@@ -95,18 +95,21 @@ in {
       setopt hist_find_no_dups
 
       zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # Case-insensitive tab-complete
-      zstyle ':completion:*' list-colors "''\${(s.:.)LS_COLORS}" # Colored tab-complete
+      zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}" # Colored tab-complete
       zstyle ':completion:*' menu select # Make tab-complete cycling highlight the item
       # REMOVE THESE 3 IF ZSH-FZF-TAB IS NOT INSTALLED
       # zstyle ':completion:*' menu no
       # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
       # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-      bindkey '^[OA' history-search-backward   # Up
-      bindkey '^[[A' history-search-backward   # Up
-
-      bindkey '^[OB' history-search-forward # Down
-      bindkey '^[[B' history-search-forward # Down
+      # History search completion by pressing up/down
+      autoload -U history-search-end
+      zle -N history-beginning-search-backward-end history-search-end
+      zle -N history-beginning-search-forward-end history-search-end
+      bindkey '^[OA' history-beginning-search-backward-end   # Up
+      bindkey '^[[A' history-beginning-search-backward-end   # Up
+      bindkey '^[OB' history-beginning-search-forward-end # Down
+      bindkey '^[[B' history-beginning-search-forward-end # Down
 
       bindkey '\e[1~' beginning-of-line            # Home
       bindkey '\e[7~' beginning-of-line            # Home

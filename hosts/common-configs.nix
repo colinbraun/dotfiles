@@ -12,17 +12,20 @@
     isNormalUser = true;
     description = userSettings.name;
     extraGroups = ["networkmanager" "wheel" "usb" "uinput"];
-    packages = with pkgs; [];
+    packages = [];
   };
 
-  # Setup udev rules for all kinds of devices
   services = {
+    # Setup udev rules for all kinds of devices
     udev = {
-      packages = with pkgs; [
-        game-devices-udev-rules
+      packages = [
+        pkgs.game-devices-udev-rules
       ];
     };
+    # D-Bus interface to query storage devices. Used by programs like udevil.
+    udisks2.enable = true;
   };
+
   hardware.uinput.enable = true;
 
   # Enable flakes
