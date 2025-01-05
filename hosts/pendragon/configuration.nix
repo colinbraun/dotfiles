@@ -11,6 +11,7 @@
     ../common-configs.nix
     ../common-graphical-configs.nix
     ../../system/custom/wii-u-gc-adapter.nix
+    ../../system/modules/bluetooth.nix
     ../../system/network/network.nix
     ../../system/steam.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")

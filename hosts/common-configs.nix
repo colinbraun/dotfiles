@@ -11,7 +11,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "usb" "uinput"];
+    extraGroups = ["networkmanager" "wheel" "usb" "uinput" "lp"];
     packages = [];
   };
 

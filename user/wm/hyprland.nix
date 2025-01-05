@@ -8,6 +8,7 @@
 in {
   imports = [
     ../app/terminal/kitty.nix
+    # ../app/terminal/ghostty.nix
   ];
 
   home.file."${wallpaperPath}".source = ./wallpaper.png;
@@ -21,7 +22,7 @@ in {
       monitor=eDP-1,1920x1080,0x0,1
 
       # Variables
-      $terminal = kitty
+      $terminal = ${userSettings.term}
       $fileManager = ${userSettings.fileManager}
       $menu = fuzzel
       $mainMod = SUPER
@@ -190,14 +191,14 @@ in {
       # ; swww img ~/Downloads/output.gif
       exec-once=waybar
       # exec-once=hyprctl setcursor rose-pine-hyprcursor 26
-      # exec-once=kitty
+      # exec-once=${userSettings.term}
       # exec-once=discord
       # # Start up these programs in separate workspaces
-      exec-once=[workspace 1 silent] kitty
+      exec-once=[workspace 1 silent] ${userSettings.term}
       exec-once=[workspace 2 silent] firefox
       exec-once=[workspace 3 silent] discord
 
-      # windowrule = workspace 1, kitty
+      # windowrule = workspace 1, ${userSettings.term}
       # windowrule = workspace 2, firefox
       # Need this b/c discord starts up in a different way
       windowrule = workspace 3 silent, discord
@@ -576,11 +577,11 @@ in {
     plugins = ["scratchpads"]
 
     [scratchpads.term]
-    command = "kitty --class scratchpad"
+    command = "${userSettings.term} --class scratchpad"
     margin = 50
 
     [scratchpads.numbat]
-    command = "kitty --class scratchpad -e numbat"
+    command = "${userSettings.term} --class scratchpad -e numbat"
     margin = 50
   '';
   # [scratchpads.pavucontrol]
@@ -595,7 +596,8 @@ in {
   programs.fuzzel.settings = {
     main = {
       # font = userSettings.font + ":size=13";
-      terminal = "${pkgs.kitty}/bin/kitty";
+      # terminal = "${pkgs.kitty}/bin/kitty";
+      terminal = "${userSettings.term}";
     };
     border = {
       width = 3;
