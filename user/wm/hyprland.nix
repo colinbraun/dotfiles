@@ -243,7 +243,6 @@ in {
     pyprland
     wl-clipboard # Command line copy/paste
     # hyprcursor
-    hyprland-protocols # Protocols extension for hyprland (like things in WLR and Wayland-Protocols)
     # hyprpicker # Color picker
     # hypridle # Hyprland idle daemon
     # hyprlock # Hyprland's GPU-accelerated screen locking utility
