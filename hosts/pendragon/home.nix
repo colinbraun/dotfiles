@@ -20,6 +20,7 @@
     ../../user/lang/cc.nix
     ../../user/lang/java.nix
     ../../user/lang/python.nix
+    ../../user/serial.nix
     ../../user/shell/cli.nix
     ../../user/shell/direnv.nix
     ../../user/shell/sh.nix
