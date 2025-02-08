@@ -28,6 +28,10 @@
       system = systemSettings.system;
       config.allowUnfree = true;
     };
+    pkgsAArch64 = import inputs.nixpkgs {
+      system = "aarch64-linux";
+      config.allowUnfree = true;
+    };
 
     home-manager = inputs.home-manager;
   in {
@@ -53,6 +57,17 @@
           inherit inputs;
         };
       };
+      turtwig = lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./hosts/turtwig/configuration.nix
+        ];
+        specialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
     };
 
     homeConfigurations = {
@@ -69,6 +84,17 @@
         inherit pkgs;
         modules = [
           ./hosts/pendragon/home.nix
+        ];
+        extraSpecialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+      "electro@turtwig" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsAArch64;
+        modules = [
+          ./hosts/turtwig/home.nix
         ];
         extraSpecialArgs = {
           inherit systemSettings;
