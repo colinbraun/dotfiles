@@ -39,7 +39,15 @@
   hardware.enableRedistributableFirmware = true;
 
   # I believe this is for OpenGL
-  hardware.graphics.enable = true;
+  # Also Needed for video acceleration
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # LIBVA_DRIVER_NAME=iHD
+      intel-vaapi-driver # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium)
+      libvdpau-va-gl
+    ];
+  };
 
   time.timeZone = systemSettings.timezone;
 
@@ -57,7 +65,7 @@
     LC_TIME = systemSettings.locale;
   };
 
-  networking.firewall.allowedTCPPorts = [25565];
+  networking.firewall.allowedTCPPorts = [25565 69 46446];
 
   # DO NOT CHANGE. READ DOCUMENTATION FIRST. THIS IS NOT THE SYSTEM VERSION
   system.stateVersion = "23.11";
