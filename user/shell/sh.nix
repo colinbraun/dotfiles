@@ -170,6 +170,8 @@ in {
     shellAliases = myAliases;
   };
 
+  home.shell.enableShellIntegration = true;
+
   # home.packages = with pkgs; [
   #   disfetch lolcat cowsay onefetch
   #   gnugrep gnused
