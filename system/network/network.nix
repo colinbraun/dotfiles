@@ -1,4 +1,4 @@
-{systemSettings, ...}: {
+{...}: {
   # Enable BBR congestion control
   boot.kernelModules = ["tcp_bbr"];
   boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";

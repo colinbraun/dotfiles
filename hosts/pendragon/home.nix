@@ -6,6 +6,7 @@
     ../../user/app/messaging/discord.nix
     ../../user/app/obs/obs.nix
     ../../user/app/vlc/vlc.nix
+    ../../user/editor/vscode.nix
     ../../user/games/prismlauncher.nix
     ../../user/lang/java.nix
     ../../user/lang/python.nix
