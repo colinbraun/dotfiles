@@ -15,6 +15,5 @@
   ];
 
   home.packages = [
-    pkgs.freecad
   ];
 }
