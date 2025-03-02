@@ -195,11 +195,11 @@ in {
       # exec-once=discord
       # # Start up these programs in separate workspaces
       exec-once=[workspace 1 silent] ${userSettings.term}
-      exec-once=[workspace 2 silent] firefox
+      exec-once=[workspace 2 silent] ${userSettings.browser}
       exec-once=[workspace 3 silent] discord
 
       # windowrule = workspace 1, ${userSettings.term}
-      # windowrule = workspace 2, firefox
+      # windowrule = workspace 2, ${userSettings.browser}
       # Need this b/c discord starts up in a different way
       windowrule = workspace 3 silent, discord
 

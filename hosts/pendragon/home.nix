@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   home.stateVersion = "23.11";
 
   imports = [
@@ -12,5 +12,9 @@
     ../../user/lang/python.nix
     ../../user/serial.nix
     ../../user/udiskie.nix
+  ];
+
+  home.packages = [
+    pkgs.freecad
   ];
 }

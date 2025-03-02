@@ -1,12 +1,16 @@
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      # Absolutely want
       vscodevim.vim
-      yzhang.markdown-all-in-one
       llvm-vs-code-extensions.vscode-clangd
       mkhl.direnv
+
+      # Not sure
+      eamodio.gitlens
+      yzhang.markdown-all-in-one
+      dracula-theme.theme-dracula
     ];
   };
 }

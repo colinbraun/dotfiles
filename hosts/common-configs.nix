@@ -47,8 +47,8 @@
   # Enable flakes
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # # Install firefox.
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -57,6 +57,7 @@
     file
     git
     home-manager
+    librewolf
     man-pages
     usbutils
     vim
