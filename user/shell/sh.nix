@@ -23,6 +23,8 @@
     gsta = "git stash";
     gstal = "git stash list";
     gstap = "git stash pop";
+    gt = "git tag";
+    gtl = "git tag --list";
     grep = "grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}";
     history = "history 0";
     h = "history";
