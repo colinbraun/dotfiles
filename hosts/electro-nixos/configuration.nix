@@ -8,8 +8,7 @@
     ./hardware-configuration.nix
     ../common-configs.nix
     ../../system/modules/bluetooth.nix
-    ../../system/custom/wii-u-gc-adapter.nix
-    (./. + "../../system/wm" + ("/" + userSettings.wm) + ".nix")
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
   networking.hostName = "electro-nixos";
