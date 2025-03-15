@@ -15,5 +15,6 @@
   ];
 
   home.packages = [
+    pkgs.kicad
   ];
 }

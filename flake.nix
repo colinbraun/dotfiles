@@ -17,7 +17,7 @@
       dotfilesDir = "~/.dotfiles";
       wm = "hyprland";
       term = "kitty";
-      browser = "librewolf";
+      browser = "firefox";
       editor = "nvim";
       fileManager = "thunar";
     };
