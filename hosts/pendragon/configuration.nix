@@ -34,7 +34,16 @@
     ];
 
     # Kernel
-    kernelPackages = pkgs.linuxKernel.packageAliases.linux_latest;
+    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackagesFor (
+    #   pkgs.buildLinux {
+    #     src = pkgs.fetchurl {
+    #       url = "https://git.kernel.org/torvalds/t/linux-6.14-rc7.tar.gz";
+    #       hash = "sha256-ilYQOd9IxeYERlXPt3G5AU+9ffZ137zFK/Kfu3AR2Uw=";
+    #     };
+    #     version = "6.14-rc7";
+    #   }
+    # );
   };
 
   # Misc things for this machine

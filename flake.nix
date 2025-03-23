@@ -50,6 +50,13 @@
         modules = [
           ./hosts/pendragon/configuration.nix
           # inputs.sops-nix.nixosModules.sops
+          # {
+          #   nix.settings = {
+          #     substituters = ["https://cosmic.cachix.org/"];
+          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+          #   };
+          # }
+          # inputs.nixos-cosmic.nixosModules.default
         ];
         specialArgs = {
           inherit systemSettings;
@@ -110,7 +117,8 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
+    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    # nixos-cosmic.inputs.nixpkgs.follows = "nixpkgs";
     # sops-nix.url = "github:Mic92/sops-nix";
     # sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
