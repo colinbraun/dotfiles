@@ -13,6 +13,8 @@
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
+  system.stateVersion = "25.05";
+
   networking.hostName = "turtwig";
 
   # Select additional kernel modules to install (not automatically loaded)
@@ -37,6 +39,20 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackagesFor (
+    #   pkgs.buildLinux {
+    #     src = pkgs.fetchgit {
+    #       url = "git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git";
+    #       deepClone = false;
+    #       hash = "sha256-TafGpEPOYQ2n3erdHLs9Bh6LDM8bD+RVzie7kvw83gw=";
+    #       rev = "refs/tags/v6.15-rockchip-dts64-3";
+    #       # url = "https://git.kernel.org/torvalds/t/linux-6.14-rc7.tar.gz";
+    #       # hash = "sha256-ilYQOd9IxeYERlXPt3G5AU+9ffZ137zFK/Kfu3AR2Uw=";
+    #     };
+    #     version = "6.14.0-rc1";
+    #   }
+    # );
+
     # fix zfs broken module
     supportedFilesystems = lib.mkForce [
       "vfat"
@@ -66,22 +82,4 @@
       "swapaccount=1"
     ];
   };
-
-  time.timeZone = systemSettings.timezone;
-
-  # Select internationalization properties.
-  i18n.defaultLocale = systemSettings.locale;
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = systemSettings.locale;
-    LC_IDENTIFICATION = systemSettings.locale;
-    LC_MEASUREMENT = systemSettings.locale;
-    LC_MONETARY = systemSettings.locale;
-    LC_NAME = systemSettings.locale;
-    LC_NUMERIC = systemSettings.locale;
-    LC_PAPER = systemSettings.locale;
-    LC_TELEPHONE = systemSettings.locale;
-    LC_TIME = systemSettings.locale;
-  };
-
-  system.stateVersion = "25.05"; # Did you read the comment?
 }
