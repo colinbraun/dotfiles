@@ -5,33 +5,33 @@
         ps:
           with ps; [
             # IDE
-            jupyterlab
-            ipython
-            ipykernel
+            # jupyterlab
+            # ipython
+            # ipykernel
 
             # Spyder IDE
             # spyder
             # spyder-kernels
 
             # DS
-            matplotlib
-            numpy
-            plotly
+            # matplotlib
+            # numpy
+            # plotly
             # scikit-learn-extra
-            scipy
-            seaborn
+            # scipy
+            # seaborn
 
             # probabilistic
             # pymc
 
             # formatter
-            black
+            # black
 
             # other
             # virtualenv
           ]
       )
     )
-    poetry
+    # poetry
   ];
 }

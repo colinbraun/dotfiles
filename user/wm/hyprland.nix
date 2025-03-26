@@ -257,7 +257,8 @@ in {
     tesseract4 # OCR engine
     # wev # Wayland event viewer, a debugging tool
     wlr-randr # Is this needed?
-    wlsunset
+    # wlsunset
+    hyprsunset
     wtype # Xdotool type for wayland
     xdg-desktop-portal
     xdg-desktop-portal-gtk
