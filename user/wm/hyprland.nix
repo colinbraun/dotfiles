@@ -11,7 +11,7 @@ in {
     # ../app/terminal/ghostty.nix
   ];
 
-  home.file."${wallpaperPath}".source = ./wallpaper.png;
+  home.file."${wallpaperPath}".source = ./super-mario-world-map-by-matt-vince-1920x1080.png;
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -201,7 +201,7 @@ in {
       # windowrule = workspace 1, ${userSettings.term}
       # windowrule = workspace 2, ${userSettings.browser}
       # Need this b/c discord starts up in a different way
-      windowrule = workspace 3 silent, discord
+      windowrule = workspace 3 silent, class:discord
 
 
       # Pyprland
@@ -212,10 +212,10 @@ in {
       $scratchpadsize = size 80% 85%
 
       $scratchpad = class:^(scratchpad)$
-      windowrulev2 = float,$scratchpad
-      windowrulev2 = $scratchpadsize,$scratchpad
-      windowrulev2 = workspace special silent,$scratchpad
-      windowrulev2 = center,$scratchpad
+      windowrule = float,$scratchpad
+      windowrule = $scratchpadsize,$scratchpad
+      windowrule = workspace special silent,$scratchpad
+      windowrule = center,$scratchpad
 
       # Cursors
       env = XCURSOR_SIZE,24
