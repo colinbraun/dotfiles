@@ -30,6 +30,7 @@
 
   # Device tree
   hardware.deviceTree.name = "rockchip/rk3588-orangepi-5-plus.dtb";
+  hardware.deviceTree.filter = "rk3588-orangepi-5-plus.dtb";
 
   # Linux Firmware (needed for GPU to work on this platform, I believe)
   hardware.enableRedistributableFirmware = true;
