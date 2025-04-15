@@ -57,7 +57,7 @@
     file
     git
     home-manager
-    librewolf
+    firefox
     man-pages
     usbutils
     vim
