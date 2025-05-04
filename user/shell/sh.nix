@@ -78,7 +78,7 @@ in {
 
     initExtraFirst = ''
     '';
-    initExtra = ''
+    initContent = ''
       # zsh-syntax-highlighting, zsh-completions, and zsh-autosuggestions
       # should already be setup by HM.
       source ${pkgs.fzf}/share/fzf/key-bindings.zsh

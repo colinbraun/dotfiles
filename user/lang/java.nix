@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    jdk21
+    temurin-jre-bin
   ];
 }
