@@ -232,7 +232,7 @@ in {
     fuzzel # Application launcher like rofi
     grim # Grab imges from wayland compositor
     gsettings-desktop-schemas # Is this needed???
-    keepmenu # Dmenu/Rofi/Fuzzel/... frontend for Keepass databases
+    # keepmenu # Dmenu/Rofi/Fuzzel/... frontend for Keepass databases
     kitty
     # feh # An image viewer
     killall
@@ -254,7 +254,7 @@ in {
     numbat # Convenient calculator tool with units
     qt6.qtwayland # Does this package exist???
     slurp # Select region in wayland compositor
-    tesseract4 # OCR engine
+    # tesseract4 # OCR engine
     # wev # Wayland event viewer, a debugging tool
     wlr-randr # Is this needed?
     # wlsunset
@@ -265,7 +265,7 @@ in {
     xdg-desktop-portal-hyprland
     xdg-utils
     ydotool
-    zenity # Tool to display dialogs from the commandline and shell scripts
+    # zenity # Tool to display dialogs from the commandline and shell scripts
     # (pkgs.writeScriptBin "screenshot-ocr" ''
     #   #!/bin/sh
     #   imgname="/tmp/screenshot-ocr-$(date +%Y%m%d%H%M%S).png"

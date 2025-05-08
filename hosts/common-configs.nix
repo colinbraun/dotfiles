@@ -67,12 +67,13 @@
 
   programs = {
     zsh.enable = true;
+    nano.enable = false; # Nano is enabled by default (yuck)
   };
 
   # Man pages / documentation is nice to have and not that much disk space
   documentation = {
     dev.enable = true;
-    man.generateCaches = true;
+    # man.generateCaches = true;
     nixos.includeAllModules = true;
   };
 

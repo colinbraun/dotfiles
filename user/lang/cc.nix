@@ -3,7 +3,6 @@
     # CC
     gcc
     gnumake
-    cmake
     autoconf
     automake
     libtool

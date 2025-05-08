@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    prismlauncher
+    (prismlauncher.override {jdks = [temurin-jre-bin];})
   ];
 }
