@@ -1,6 +1,7 @@
 {pkgs, ...}: let
   # My shell aliases
   myAliases = {
+    ag = "rg";
     c = "clear";
     ga = "git add";
     gau = "git add --update";
@@ -30,17 +31,16 @@
     h = "history";
     l = "ls -lah";
     la = "ls -Ah";
+    less = "less -Ri"; # Show colors, smart case
     ll = "ls -lh";
     ls = "ls --color";
     o = "xdg-open";
+    rg = "rg -S"; # Smart case
     v = "nvim";
     vi = "nvim";
     vim = "nvim";
     ze = "vi /home/electro/.zshrc";
     zl = "source /home/electro/.zshrc";
-    less = "less -Ri"; # Show colors, smart case
-    rg = "rg -S"; # Smart case
-    ag = "rg";
   };
 in {
   imports = [
@@ -149,6 +149,29 @@ in {
       bindkey '^[[1;5D' backward-word              # C-Left
       bindkey '^[0d'    backward-word              # C-Left
       bindkey '^[[5D'   backward-word              # C-Left
+
+      # Functions
+
+      # (n)ix (s)hell
+      function ns() {
+        package=$1
+        nix shell "nixpkgs#''${package}"
+      }
+
+      # (n)ix (s)hell (r)un - Shorthand for nix shell nixpkgs#<$1> -c <$1|[$2]>
+      function nsr() {
+        if [ $# -lt 1 -o $# -gt 2 ]; then
+          echo "Syntax: nsr <package> [command]"
+          return 1
+        fi
+        package=$1
+        if [ $# -eq 1 ]; then
+          command=$1
+        else
+          command=$2
+        fi
+        nix shell "nixpkgs#''${package}" -c "$command"
+      }
     '';
     # bindkey -s ^f "tmux-sessionizer\n"
 
