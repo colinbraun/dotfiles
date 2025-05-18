@@ -15,21 +15,30 @@ vim.o.clipboard = "unnamedplus"  -- yank/delete into system clipboard
 vim.o.list = true
 --vim.o.listchars = "tab:⇢⇥,trail:⎵,eol:↩"
 vim.o.listchars = "tab:⇢⇥,trail:⎵"
-vim.o.wrap = false
+vim.o.wrap = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 -- stylua: ignore end
 
 vim.g.mapleader = "," -- set `<leader>` to the comma key
 
 -- VIM KEYBINDS
 -- Clear highlights on search
-vim.keymap.set('n', '<leader><space>', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', '<leader><space>', '<cmd>nohlsearch<cr>')
+-- Create new vertical split
+vim.keymap.set('n', '<leader>w', '<cmd>vsplit<cr><c-w>l')
+-- Next buffer
+vim.keymap.set('n', '<leader>n', '<cmd>bnext<cr>')
+-- Previous buffer
+vim.keymap.set('n', '<leader>p', '<cmd>bprevious<cr>')
 -- Tmux navigation (depends on tmux navigator being installed
 vim.keymap.set('n', "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
 vim.keymap.set('n', "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
 vim.keymap.set('n', "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
 vim.keymap.set('n', "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
 vim.keymap.set('n', "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
--- vim.keymap.set('n', '', '<cmd>nohlsearch<CR>')
+vim.keymap.set('n', ";", ":")
+vim.keymap.set('i', "jj", "<Esc>")
 
 -- Set up indent markers
 require("ibl").setup({

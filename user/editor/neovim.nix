@@ -38,6 +38,7 @@
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.crates-nvim
       pkgs.vimPlugins.vim-tmux-navigator
+      pkgs.vimPlugins.nvim-autopairs
     ];
   };
 }
