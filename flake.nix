@@ -23,8 +23,11 @@
     };
 
     lib = inputs.nixpkgs.lib;
-    # pkgs = nixpkgs.legacyPackages.${systemSettings.system};
     pkgs = import inputs.nixpkgs {
+      system = systemSettings.system;
+      config.allowUnfree = true;
+    };
+    pkgs-stable = import inputs.nixpkgs-stable {
       system = systemSettings.system;
       config.allowUnfree = true;
     };
@@ -34,9 +37,10 @@
     };
 
     home-manager = inputs.home-manager;
+    home-manager-stable = inputs.home-manager-stable;
   in {
     nixosConfigurations = {
-      electro-nixos = lib.nixosSystem {
+      electro-nixos = inputs.nixpkgs-stable.lib.nixosSystem {
         system = systemSettings.system;
         modules = [./hosts/electro-nixos/configuration.nix];
         specialArgs = {
@@ -45,7 +49,7 @@
           inherit inputs;
         };
       };
-      pendragon = lib.nixosSystem {
+      pendragon = inputs.nixpkgs.lib.nixosSystem {
         system = systemSettings.system;
         modules = [
           ./hosts/pendragon/configuration.nix
@@ -64,7 +68,7 @@
           inherit inputs;
         };
       };
-      turtwig = lib.nixosSystem {
+      turtwig = inputs.nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
           ./hosts/turtwig/configuration.nix
@@ -78,8 +82,8 @@
     };
 
     homeConfigurations = {
-      "electro@electro-nixos" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+      "electro@electro-nixos" = home-manager-stable.lib.homeManagerConfiguration {
+        pkgs = pkgs-stable;
         modules = [./hosts/electro-nixos/home.nix];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -113,10 +117,15 @@
   };
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager-stable.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager-stable.url = "github:nix-community/home-manager";
+    home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     # nixos-cosmic.inputs.nixpkgs.follows = "nixpkgs";
     # sops-nix.url = "github:Mic92/sops-nix";
