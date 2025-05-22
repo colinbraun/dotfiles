@@ -116,7 +116,10 @@ in {
           disable_hyprland_logo = true
       }
 
-
+      ecosystem {
+          no_update_news = true
+          no_donation_nag = true
+      }
 
 
       # BINDS
