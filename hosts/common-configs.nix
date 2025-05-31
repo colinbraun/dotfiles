@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   userSettings,
   systemSettings,
   ...
@@ -82,7 +83,7 @@
   users.defaultUserShell = pkgs.zsh;
 
   # Some programs try to enable this heavy accessibility option, disable it.
-  services.speechd.enable = false;
+  services.speechd.enable = lib.mkForce false;
 
   hardware.uinput.enable = true;
 

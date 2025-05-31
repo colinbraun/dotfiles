@@ -43,14 +43,16 @@
     # kernelPackages = pkgs.linuxPackagesFor (
     #   pkgs.buildLinux {
     #     src = pkgs.fetchgit {
-    #       url = "git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git";
+    #       # url = "git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git";
+    #       url = "https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux.git";
     #       deepClone = false;
-    #       hash = "sha256-TafGpEPOYQ2n3erdHLs9Bh6LDM8bD+RVzie7kvw83gw=";
-    #       rev = "refs/tags/v6.15-rockchip-dts64-3";
+    #       hash = "sha256-kSkF85kVxVoJMlvWxX3GjDweuppHohhKY2djTauKp7c=";
+    #       rev = "3ae3a541e5a1a98ad0149dbcdfce2a85d4877bac";
     #       # url = "https://git.kernel.org/torvalds/t/linux-6.14-rc7.tar.gz";
     #       # hash = "sha256-ilYQOd9IxeYERlXPt3G5AU+9ffZ137zFK/Kfu3AR2Uw=";
     #     };
-    #     version = "6.14.0-rc1";
+    #     version = "6.14.0";
+    #     ignoreConfigErrors = true;
     #   }
     # );
 
@@ -83,4 +85,21 @@
       "swapaccount=1"
     ];
   };
+
+  services.desktopManager.plasma6.enable = true;
+
+  networking.firewall.allowedTCPPorts = [22];
+
+  services.openssh = {
+    enable = true;
+    ports = [22];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = ["electro"]; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
+
 }
