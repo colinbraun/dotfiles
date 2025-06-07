@@ -88,7 +88,8 @@
 
   services.desktopManager.plasma6.enable = true;
 
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [22 25565];
+  # networking.firewall.allowedUDPPorts = [9];
 
   services.openssh = {
     enable = true;
