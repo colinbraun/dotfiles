@@ -10,7 +10,7 @@
     ./hardware-configuration.nix
     ../common-configs.nix
     ../../system/network/network.nix
-    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
+    # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
   system.stateVersion = "25.05";
@@ -86,7 +86,7 @@
     ];
   };
 
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
   networking.firewall.allowedTCPPorts = [22 25565];
   # networking.firewall.allowedUDPPorts = [9];
