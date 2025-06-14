@@ -14,12 +14,13 @@
       pkgs.vimPlugins.which-key-nvim
       pkgs.vimPlugins.lz-n
       pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-nvim-lsp
       pkgs.vimPlugins.lspkind-nvim # VSCode-like pictograms for LSP
       pkgs.vimPlugins.nvim-cmp
       pkgs.vimPlugins.gitsigns-nvim
       pkgs.vimPlugins.neogit
       pkgs.vimPlugins.luasnip
-      pkgs.vimPlugins.luasnip
+      pkgs.vimPlugins.friendly-snippets
       pkgs.vimPlugins.telescope-nvim
       pkgs.vimPlugins.telescope-ui-select-nvim
       pkgs.vimPlugins.rainbow-delimiters-nvim
