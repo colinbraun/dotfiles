@@ -45,8 +45,12 @@
     udisks2.enable = true;
   };
 
-  # Enable flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    # Enable flakes
+    experimental-features = ["nix-command" "flakes"];
+    # Must be trusted user to use substituters
+    trusted-users = ["${userSettings.username}"];
+  };
 
   # # Install firefox.
   # programs.firefox.enable = true;
