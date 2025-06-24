@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   # My shell aliases
   myAliases = {
     ag = "rg";
@@ -14,7 +18,11 @@
     gf = "git fetch";
     gl = "git pull";
     glo = "git log --oneline --decorate";
-    glog = "git log --oneline --decorate --graph";
+    glog = lib.strings.concatStrings [
+      "git log --graph --abbrev-commit --decorate --format=format:"
+      "'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) "
+      "%C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+    ];
     gm = "git merge";
     gp = "git push";
     gr = "git remote";
