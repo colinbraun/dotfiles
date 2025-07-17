@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   userSettings,
   systemSettings,
   ...
@@ -34,26 +33,12 @@
     LC_TIME = systemSettings.locale;
   };
 
-  services = {
-    # Setup udev rules for all kinds of devices
-    udev = {
-      packages = [
-        pkgs.game-devices-udev-rules
-      ];
-    };
-    # D-Bus interface to query storage devices. Used by programs like udevil.
-    udisks2.enable = true;
-  };
-
   nix.settings = {
     # Enable flakes
     experimental-features = ["nix-command" "flakes"];
     # Must be trusted user to use substituters
     trusted-users = ["${userSettings.username}"];
   };
-
-  # # Install firefox.
-  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -62,7 +47,6 @@
     file
     git
     home-manager
-    firefox
     man-pages
     usbutils
     vim
@@ -86,17 +70,5 @@
   environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
-  # Some programs try to enable this heavy accessibility option, disable it.
-  services.speechd.enable = lib.mkForce false;
-
   hardware.uinput.enable = true;
-
-  hardware.graphics = {
-    # Enable hardware-accelerated graphics drivers
-    enable = true;
-    # Enbable hardware-accelerated video
-    extraPackages = with pkgs; [
-      libvdpau-va-gl
-    ];
-  };
 }

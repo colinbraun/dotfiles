@@ -8,7 +8,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../common-configs.nix
+    ../common-base.nix
     # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
@@ -56,13 +56,13 @@
     # );
 
     # fix zfs broken module
-    supportedFilesystems = lib.mkForce [
-      "vfat"
-      "fat32"
-      "exfat"
-      "ext4"
-      "btrfs"
-    ];
+    # supportedFilesystems = lib.mkForce [
+    #   "vfat"
+    #   "fat32"
+    #   "exfat"
+    #   "ext4"
+    #   "btrfs"
+    # ];
 
     loader = {
       grub.enable = false;

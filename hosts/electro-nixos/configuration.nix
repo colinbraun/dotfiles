@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../common-configs.nix
+    ../common-desktop.nix
     ../../system/modules/bluetooth.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];

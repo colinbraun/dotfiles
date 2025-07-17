@@ -9,8 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../common-configs.nix
-    ../../system/network/network.nix
+    ../common-desktop.nix
     ../../system/steam.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
