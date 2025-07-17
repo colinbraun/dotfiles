@@ -9,7 +9,6 @@
   imports = [
     ./hardware-configuration.nix
     ../common-configs.nix
-    ../../system/network/network.nix
     # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
