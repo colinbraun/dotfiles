@@ -3,12 +3,13 @@
     alejandra # Nix formatter
     lua-language-server
     nil # Nix LSP
-    pyright
+    # pyright
     ripgrep # Faster grep, like silver searcher (ag)
   ];
 
   programs.neovim = {
     enable = true;
+    withRuby = false;
     plugins = with pkgs.vimPlugins; [
       cmp-nvim-lsp
       cmp_luasnip

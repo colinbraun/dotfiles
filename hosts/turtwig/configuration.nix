@@ -34,8 +34,6 @@
   # Linux Firmware (needed for GPU to work on this platform, I believe)
   hardware.enableRedistributableFirmware = true;
 
-  hardware.graphics.enable = true;
-
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
