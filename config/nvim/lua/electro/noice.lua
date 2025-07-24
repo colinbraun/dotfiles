@@ -6,7 +6,6 @@ require("noice").setup({
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
     },
-    messages = { enabled = true, },
   },
   presets = {
     bottom_search = true,

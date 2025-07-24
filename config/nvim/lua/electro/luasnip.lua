@@ -1,5 +1,6 @@
-local luasnip = require("luasnip")
+-- local luasnip = require("luasnip")
 
+print("test")
 ---returns a function that steps a choice if available by `step`
 ---@param step integer
 ---@return function

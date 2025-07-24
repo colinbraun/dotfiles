@@ -18,6 +18,8 @@ vim.o.listchars = "tab:⇢⇥,trail:⎵"
 vim.o.wrap = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.undofile = true
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- stylua: ignore end
 
 vim.g.mapleader = "," -- set `<leader>` to the comma key
@@ -32,10 +34,10 @@ vim.keymap.set('n', '<leader>n', '<cmd>bnext<cr>')
 -- Previous buffer
 vim.keymap.set('n', '<leader>p', '<cmd>bprevious<cr>')
 -- Tmux navigation (depends on tmux navigator being installed
-vim.keymap.set('n', "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>")
-vim.keymap.set('n', "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>")
-vim.keymap.set('n', "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>")
-vim.keymap.set('n', "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>")
+vim.keymap.set({ 'n', 'i' }, "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
+-- vim.keymap.set({ 'n', 'i' }, "<c-j>", "<cmd>TmuxNavigateDown<cr>")
+-- vim.keymap.set({ 'n', 'i' }, "<c-k>", "<cmd>TmuxNavigateUp<cr>")
+vim.keymap.set({ 'n', 'i' }, "<c-l>", "<cmd>TmuxNavigateRight<cr>")
 vim.keymap.set('n', "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>")
 vim.keymap.set('n', ";", ":")
 vim.keymap.set('i', "jj", "<Esc>")

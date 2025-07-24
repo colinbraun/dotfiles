@@ -30,10 +30,11 @@ lspconfig.rust_analyzer.setup({
         enable = true,
       },
       lens = { enable = true, },
-      checkOnSave = {
-        command = "clippy",
-        allFeatures = true,
-      },
+      checkOnSave = true,
+      -- checkOnSave = {
+      --   command = "clippy",
+      --   allFeatures = true,
+      -- },
     },
   },
 })
