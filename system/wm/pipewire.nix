@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Pipewire
   # sound.enable = true;
   services.pulseaudio.enable = false;

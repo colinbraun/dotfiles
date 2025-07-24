@@ -3,7 +3,8 @@
   pkgs,
   userSettings,
   ...
-}: {
+}:
+{
   system.stateVersion = "24.05";
 
   imports = [
@@ -45,7 +46,7 @@
   };
 
   # Misc things for this machine
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
@@ -55,10 +56,10 @@
 
   services.openssh = {
     enable = true;
-    ports = [22];
+    ports = [ 22 ];
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = ["electro"]; # Allows all users by default. Can be [ "user1" "user2" ]
+      AllowUsers = [ "electro" ]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"

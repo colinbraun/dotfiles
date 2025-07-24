@@ -3,7 +3,8 @@
   config,
   userSettings,
   ...
-}: {
+}:
+{
   imports = [
     ../user/editor/neovim.nix
     ../user/shell/cli.nix

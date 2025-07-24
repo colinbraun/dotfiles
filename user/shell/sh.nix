@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   # My shell aliases
   myAliases = {
     ag = "rg";
@@ -50,7 +51,8 @@
     ze = "vi /home/electro/.zshrc";
     zl = "source /home/electro/.zshrc";
   };
-in {
+in
+{
   imports = [
     ./tmux.nix
   ];
@@ -84,8 +86,7 @@ in {
     autosuggestion.enable = true;
     shellAliases = myAliases;
 
-    initExtraFirst = ''
-    '';
+    initExtraFirst = '''';
     initContent = ''
       # zsh-syntax-highlighting, zsh-completions, and zsh-autosuggestions
       # should already be setup by HM.

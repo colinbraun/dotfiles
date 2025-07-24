@@ -1,5 +1,6 @@
 # Common home-manager configurations for any machine with a desktop environment
-{userSettings, ...}: {
+{ userSettings, ... }:
+{
   imports = [
     ./home-common-base.nix
     (./. + "/../user/wm" + ("/" + userSettings.wm) + ".nix") # My window manager selected from flake

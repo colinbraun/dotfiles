@@ -3,9 +3,11 @@
   pkgs,
   userSettings,
   ...
-}: let
+}:
+let
   wallpaperPath = "${config.xdg.userDirs.pictures}/Wallpapers/wallpaper.png";
-in {
+in
+{
   imports = [
     ../app/terminal/kitty.nix
     # ../app/terminal/ghostty.nix
@@ -15,7 +17,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = {};
+    settings = { };
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
       # monitor=,preferred,auto,auto
@@ -225,7 +227,9 @@ in {
       # env = HYPRCURSOR_THEME,rose-pine-hyprcursor
       # env = HYPRCURSOR_SIZE,26
     '';
-    xwayland = {enable = true;};
+    xwayland = {
+      enable = true;
+    };
     systemd.enable = true;
   };
 
@@ -339,7 +343,7 @@ in {
           "clock"
           "hyprland/workspaces"
         ];
-        "modules-center" = ["hyprland/window"];
+        "modules-center" = [ "hyprland/window" ];
         "modules-right" = [
           "tray"
           "battery"
@@ -356,16 +360,16 @@ in {
           "on-click" = "activate";
           # "format" = "{icon}";
           "persistent_workspaces" = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-            "5" = [];
-            "6" = [];
-            "7" = [];
-            "8" = [];
-            "9" = [];
-            "10" = [];
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+            "6" = [ ];
+            "7" = [ ];
+            "8" = [ ];
+            "9" = [ ];
+            "10" = [ ];
           };
         };
         "tray" = {
@@ -380,7 +384,17 @@ in {
         "backlight" = {
           "device" = "intel_backlight";
           "format" = "{icon} {percent}%";
-          "format-icons" = ["" "" "" "" "" "" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
           "on-scroll-up" = "brightnessctl set 1%+";
           "on-scroll-down" = "brightnessctl -n240 set 1%-";
           "min-length" = 6;
@@ -396,7 +410,13 @@ in {
           "format-plugged" = "{capacity}% ";
           #"format-good" = ""; # An empty format will hide the module
           #"format-full" = "";
-          "format-icons" = ["" "" "" "" ""];
+          "format-icons" = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         "pulseaudio" = {
           "format" = "{icon}  {volume}%";
@@ -414,7 +434,11 @@ in {
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = ["" "" ""];
+            "default" = [
+              ""
+              ""
+              ""
+            ];
           };
         };
         "pulseaudio#microphone" = {

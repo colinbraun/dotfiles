@@ -3,7 +3,8 @@
   userSettings,
   systemSettings,
   ...
-}: {
+}:
+{
   imports = [
     ../system/modules/fhs-compat.nix # nix-ld for running downloaded elfs
     ../system/network/network.nix # Common network configurations
@@ -13,8 +14,15 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "usb" "uinput" "lp" "dialout"];
-    packages = [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "usb"
+      "uinput"
+      "lp"
+      "dialout"
+    ];
+    packages = [ ];
   };
 
   time.timeZone = systemSettings.timezone;
@@ -37,9 +45,12 @@
 
   nix.settings = {
     # Enable flakes
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     # Must be trusted user to use substituters
-    trusted-users = ["${userSettings.username}"];
+    trusted-users = [ "${userSettings.username}" ];
   };
 
   # Allow unfree packages
@@ -69,7 +80,7 @@
   };
 
   # Make zsh the default
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
 
   hardware.uinput.enable = true;

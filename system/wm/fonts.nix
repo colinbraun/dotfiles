@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   fonts = {
     fontconfig.enable = true;
     packages = with pkgs; [
@@ -14,9 +15,9 @@
       # terminus_font
     ];
     fontconfig.defaultFonts = {
-      monospace = ["FiraCode Nerd Font"];
-      serif = ["DejaVu Serif"];
-      sansSerif = ["DejaVu Sans"];
+      monospace = [ "FiraCode Nerd Font" ];
+      serif = [ "DejaVu Serif" ];
+      sansSerif = [ "DejaVu Sans" ];
     };
   };
 }

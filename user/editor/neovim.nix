@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    alejandra # Nix formatter
     lua-language-server
-    nil # Nix LSP
-    # pyright
+    nixd
+    nixfmt-rfc-style
     ripgrep # Faster grep, like silver searcher (ag)
   ];
 

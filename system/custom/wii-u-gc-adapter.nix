@@ -1,4 +1,5 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   wii-u-gc-adapter = pkgs.stdenv.mkDerivation {
     name = "wii-u-gc-adapter";
     src = pkgs.fetchFromGitHub {
@@ -15,14 +16,15 @@
       pkgs.pkg-config
     ];
 
-    hardeningDisable = ["all"];
+    hardeningDisable = [ "all" ];
 
     installPhase = ''
       mkdir -p $out/bin
       cp wii-u-gc-adapter $out/bin
     '';
   };
-in {
+in
+{
   systemd.services."wii-u-gc-adapter" = {
     enable = false; # Just start the service yourself if you want to use it
     description = "USB Wii U Gamecube Adapter Manager";
@@ -30,7 +32,7 @@ in {
       Type = "simple";
       ExecStart = "${wii-u-gc-adapter}/bin/wii-u-gc-adapter";
     };
-    wantedBy = ["graphical.target"];
+    wantedBy = [ "graphical.target" ];
   };
   # Extra udev rules
   # TODO: Consider changing this to use the dolphin-rules package

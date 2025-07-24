@@ -10,120 +10,122 @@
     ];
   };
 
-  outputs = inputs @ {self, ...}: let
-    # SYSTEM SETTINGS
-    systemSettings = {
-      system = "x86_64-linux";
-      timezone = "America/Chicago";
-      locale = "en_US.UTF-8";
-    };
-
-    # USER SETTINGS
-    userSettings = {
-      username = "electro";
-      name = "Electro";
-      email = "electrolitic21@gmail.com";
-      dotfilesDir = "~/.dotfiles";
-      wm = "hyprland";
-      term = "kitty";
-      browser = "firefox";
-      editor = "nvim";
-      fileManager = "thunar";
-    };
-
-    lib = inputs.nixpkgs.lib;
-    pkgs = import inputs.nixpkgs {
-      system = systemSettings.system;
-      config.allowUnfree = true;
-    };
-    pkgs-stable = import inputs.nixpkgs-stable {
-      system = systemSettings.system;
-      config.allowUnfree = true;
-    };
-    pkgsAArch64 = import inputs.nixpkgs {
-      system = "aarch64-linux";
-      config.allowUnfree = true;
-    };
-
-    home-manager = inputs.home-manager;
-    home-manager-stable = inputs.home-manager-stable;
-  in {
-    nixosConfigurations = {
-      electro-nixos = inputs.nixpkgs-stable.lib.nixosSystem {
-        system = systemSettings.system;
-        modules = [./hosts/electro-nixos/configuration.nix];
-        specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
-        };
+  outputs =
+    inputs@{ ... }:
+    let
+      # SYSTEM SETTINGS
+      systemSettings = {
+        system = "x86_64-linux";
+        timezone = "America/Chicago";
+        locale = "en_US.UTF-8";
       };
-      pendragon = inputs.nixpkgs.lib.nixosSystem {
-        system = systemSettings.system;
-        modules = [
-          ./hosts/pendragon/configuration.nix
-          # inputs.sops-nix.nixosModules.sops
-          # {
-          #   nix.settings = {
-          #     substituters = ["https://cosmic.cachix.org/"];
-          #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
-          #   };
-          # }
-          # inputs.nixos-cosmic.nixosModules.default
-        ];
-        specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
-        };
+
+      # USER SETTINGS
+      userSettings = {
+        username = "electro";
+        name = "Electro";
+        email = "electrolitic21@gmail.com";
+        dotfilesDir = "~/.dotfiles";
+        wm = "hyprland";
+        term = "kitty";
+        browser = "firefox";
+        editor = "nvim";
+        fileManager = "thunar";
       };
-      turtwig = inputs.nixpkgs.lib.nixosSystem {
+
+      pkgs = import inputs.nixpkgs {
+        system = systemSettings.system;
+        config.allowUnfree = true;
+      };
+      pkgs-stable = import inputs.nixpkgs-stable {
+        system = systemSettings.system;
+        config.allowUnfree = true;
+      };
+      pkgsAArch64 = import inputs.nixpkgs {
         system = "aarch64-linux";
-        modules = [
-          ./hosts/turtwig/configuration.nix
-        ];
-        specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
-        };
+        config.allowUnfree = true;
       };
-    };
 
-    homeConfigurations = {
-      "electro@electro-nixos" = home-manager-stable.lib.homeManagerConfiguration {
-        pkgs = pkgs-stable;
-        modules = [./hosts/electro-nixos/home.nix];
-        extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+      home-manager = inputs.home-manager;
+      home-manager-stable = inputs.home-manager-stable;
+    in
+    {
+      nixosConfigurations = {
+        electro-nixos = inputs.nixpkgs-stable.lib.nixosSystem {
+          system = systemSettings.system;
+          modules = [ ./hosts/electro-nixos/configuration.nix ];
+          specialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
+        pendragon = inputs.nixpkgs.lib.nixosSystem {
+          system = systemSettings.system;
+          modules = [
+            ./hosts/pendragon/configuration.nix
+            # inputs.sops-nix.nixosModules.sops
+            # {
+            #   nix.settings = {
+            #     substituters = ["https://cosmic.cachix.org/"];
+            #     trusted-public-keys = ["cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="];
+            #   };
+            # }
+            # inputs.nixos-cosmic.nixosModules.default
+          ];
+          specialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
+        turtwig = inputs.nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [
+            ./hosts/turtwig/configuration.nix
+          ];
+          specialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
         };
       };
-      "electro@pendragon" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [
-          ./hosts/pendragon/home.nix
-        ];
-        extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+
+      homeConfigurations = {
+        "electro@electro-nixos" = home-manager-stable.lib.homeManagerConfiguration {
+          pkgs = pkgs-stable;
+          modules = [ ./hosts/electro-nixos/home.nix ];
+          extraSpecialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
         };
-      };
-      "electro@turtwig" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgsAArch64;
-        modules = [
-          ./hosts/turtwig/home.nix
-        ];
-        extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+        "electro@pendragon" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./hosts/pendragon/home.nix
+          ];
+          extraSpecialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
+        "electro@turtwig" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsAArch64;
+          modules = [
+            ./hosts/turtwig/home.nix
+          ];
+          extraSpecialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
         };
       };
     };
-  };
 
   inputs = {
     nixpkgs-stable.url = "nixpkgs/nixos-25.05";

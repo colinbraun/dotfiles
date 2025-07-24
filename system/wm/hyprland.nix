@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Import wayland config
   imports = [
     ./wayland.nix

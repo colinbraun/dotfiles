@@ -3,7 +3,8 @@
   pkgs,
   userSettings,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ../common-desktop.nix
@@ -43,7 +44,11 @@
     ];
   };
 
-  networking.firewall.allowedTCPPorts = [25565 69 46446];
+  networking.firewall.allowedTCPPorts = [
+    25565
+    69
+    46446
+  ];
 
   # DO NOT CHANGE. READ DOCUMENTATION FIRST. THIS IS NOT THE SYSTEM VERSION
   system.stateVersion = "23.11";

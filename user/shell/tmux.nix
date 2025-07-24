@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Note this causes strange things when using my own .tmux.conf
   # programs.tmux = {
   # enable = true;
