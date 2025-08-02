@@ -11,7 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common-desktop.nix
-    ../../system/steam.nix
+    # ../../system/steam.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
