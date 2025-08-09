@@ -9,6 +9,7 @@
     ../../user/app/vlc/vlc.nix
     ../../user/editor/vscode.nix
     ../../user/games/prismlauncher.nix
+    ../../user/games/retroarch.nix
     ../../user/lang/java.nix
     ../../user/lang/python.nix
     ../../user/serial.nix
