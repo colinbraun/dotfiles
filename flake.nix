@@ -51,7 +51,7 @@
     in
     {
       nixosConfigurations = {
-        electro-nixos = inputs.nixpkgs-stable.lib.nixosSystem {
+        electro-nixos = inputs.nixpkgs.lib.nixosSystem {
           system = systemSettings.system;
           modules = [ ./hosts/electro-nixos/configuration.nix ];
           specialArgs = {
@@ -93,8 +93,8 @@
       };
 
       homeConfigurations = {
-        "electro@electro-nixos" = home-manager-stable.lib.homeManagerConfiguration {
-          pkgs = pkgs-stable;
+        "electro@electro-nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgs;
           modules = [ ./hosts/electro-nixos/home.nix ];
           extraSpecialArgs = {
             inherit systemSettings;
