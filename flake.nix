@@ -37,17 +37,17 @@
         system = systemSettings.system;
         config.allowUnfree = true;
       };
-      pkgs-stable = import inputs.nixpkgs-stable {
-        system = systemSettings.system;
-        config.allowUnfree = true;
-      };
+      # pkgs-stable = import inputs.nixpkgs-stable {
+      #   system = systemSettings.system;
+      #   config.allowUnfree = true;
+      # };
       pkgsAArch64 = import inputs.nixpkgs {
         system = "aarch64-linux";
         config.allowUnfree = true;
       };
 
       home-manager = inputs.home-manager;
-      home-manager-stable = inputs.home-manager-stable;
+      # home-manager-stable = inputs.home-manager-stable;
     in
     {
       nixosConfigurations = {
@@ -128,15 +128,14 @@
     };
 
   inputs = {
-    nixpkgs-stable.url = "nixpkgs/nixos-25.05";
+    # nixpkgs-stable.url = "nixpkgs/nixos-25.05";
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    home-manager-stable.url = "github:nix-community/home-manager/release-25.05";
-    # home-manager-stable.url = "github:nix-community/home-manager";
-    home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
+    # home-manager-stable.url = "github:nix-community/home-manager/release-25.05";
+    # home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     # nixos-cosmic.inputs.nixpkgs.follows = "nixpkgs";
     # sops-nix.url = "github:Mic92/sops-nix";
