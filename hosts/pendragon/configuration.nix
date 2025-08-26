@@ -31,7 +31,9 @@
     kernelModules = [
       "v4l2loopback"
     ];
-
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackagesFor (
@@ -52,7 +54,16 @@
     "net.ipv4.conf.all.forwarding" = true;
   };
 
-  networking.firewall.enable = false;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [
+      22
+      2626
+    ];
+    allowedUDPPorts = [
+      2626
+    ];
+  };
 
   services.openssh = {
     enable = true;

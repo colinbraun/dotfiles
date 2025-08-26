@@ -16,7 +16,7 @@
     ../../user/udiskie.nix
   ];
 
-  home.packages = [
-    # pkgs.kicad
+  home.packages = with pkgs; [
+    dolphin-emu
   ];
 }
