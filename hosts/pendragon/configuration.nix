@@ -23,17 +23,17 @@
     loader.efi.canTouchEfiVariables = true;
     # Select additional kernel modules to install (not automatically loaded)
     # Can also select a specific kernel to use if desired
-    # extraModulePackages = [
-    #   # Virtual camera for OBS
-    #   config.boot.kernelPackages.v4l2loopback
-    # ];
-    # # Modules to be automatically loaded in second stage of boot process
-    # kernelModules = [
-    #   "v4l2loopback"
-    # ];
-    # extraModprobeConfig = ''
-    #   options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
-    # '';
+    extraModulePackages = [
+      # Virtual camera for OBS
+      config.boot.kernelPackages.v4l2loopback
+    ];
+    # Modules to be automatically loaded in second stage of boot process
+    kernelModules = [
+      "v4l2loopback"
+    ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
     # kernelPackages = pkgs.linuxPackagesFor (

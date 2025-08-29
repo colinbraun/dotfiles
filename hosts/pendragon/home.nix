@@ -18,5 +18,6 @@
 
   home.packages = with pkgs; [
     dolphin-emu
+    devenv
   ];
 }
