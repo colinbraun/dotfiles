@@ -7,7 +7,7 @@
     ../../user/app/messaging/discord.nix
     ../../user/app/obs/obs.nix
     ../../user/app/vlc/vlc.nix
-    ../../user/editor/vscode.nix
+    # ../../user/editor/vscode.nix
     ../../user/games/prismlauncher.nix
     ../../user/games/retroarch.nix
     ../../user/lang/java.nix
@@ -19,5 +19,6 @@
   home.packages = with pkgs; [
     dolphin-emu
     devenv
+    vscode
   ];
 }

@@ -6,6 +6,7 @@
     fastfetch
     ripgrep
     rsync
+    tree
     unzip
     zip
   ];
