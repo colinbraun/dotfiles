@@ -18,8 +18,11 @@ let
     gco = "git checkout";
     gd = "git diff";
     gf = "git fetch";
+    gfa = "git fetch --all";
     gl = "git pull";
-    glo = "git log --oneline --decorate";
+    glo = "git log";
+    gloo = "git log --oneline --decorate";
+    glop = "git log -p";
     glog = lib.strings.concatStrings [
       "git log --graph --abbrev-commit --decorate --format=format:"
       "'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) "
@@ -30,10 +33,16 @@ let
     gr = "git remote";
     grb = "git rebase";
     grbf = "git add -u; git commit -m Fix; git rebase -i HEAD~2";
+    grst = "git reset";
+    grsth = "git reset --hard";
+    gs = "git status";
+    gsh = "git show";
     gst = "git status";
     gsta = "git stash";
+    gstad = "git stash drop";
     gstal = "git stash list";
     gstap = "git stash pop";
+    gsw = "git switch";
     gt = "git tag";
     gtl = "git tag --list";
     grep = "grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox}";
@@ -49,8 +58,8 @@ let
     v = "nvim";
     vi = "nvim";
     vim = "nvim";
-    ze = "vi /home/electro/.zshrc";
-    zl = "source /home/electro/.zshrc";
+    ze = "vi ~/.dotfiles/user/shell/sh.nix";
+    zl = "_zsh_rebuild && source ~/.zshrc";
   };
 in
 {
@@ -181,6 +190,22 @@ in
           command=$2
         fi
         nix shell "nixpkgs#''${package}" -c "$command"
+      }
+
+      function vf() {
+        vi $(find -iname "$1")
+      }
+
+      function _zsh_rebuild() {
+        (
+          cd ~/.dotfiles \
+            && git add -u \
+            && home-manager switch --flake . --show-trace --print-build-logs
+        ) > /dev/null 2>&1
+        if [ "$?" -ne 0 ]; then
+          echo "Failed to rebuild .zsh"
+          return 1
+        fi
       }
     '';
     # bindkey -s ^f "tmux-sessionizer\n"
