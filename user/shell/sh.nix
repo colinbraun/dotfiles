@@ -53,6 +53,8 @@ let
     less = "less -Ri"; # Show colors, smart case
     ll = "ls -lh";
     ls = "ls --color";
+    nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles --print-build-logs --show-trace";
+    nhs = "home-manager switch --flake ~/.dotfiles --show-trace --print-build-logs";
     o = "xdg-open";
     rg = "rg -S"; # Smart case
     v = "nvim";
