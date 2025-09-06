@@ -47,6 +47,7 @@
   networking.firewall.allowedTCPPorts = [
   ];
 
+  networking.nameservers = [ "9.9.9.9" ];
   # DO NOT CHANGE. READ DOCUMENTATION FIRST. THIS IS NOT THE SYSTEM VERSION
   system.stateVersion = "23.11";
 }
