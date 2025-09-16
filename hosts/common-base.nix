@@ -43,14 +43,16 @@
     };
   };
 
-  nix.settings = {
-    # Enable flakes
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    # Must be trusted user to use substituters
-    trusted-users = [ "${userSettings.username}" ];
+  nix = {
+    settings = {
+      # Enable flakes
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      # Must be trusted user to use substituters
+      trusted-users = [ "${userSettings.username}" ];
+    };
   };
 
   # Allow unfree packages
