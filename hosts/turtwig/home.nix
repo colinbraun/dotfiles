@@ -3,7 +3,8 @@
   home.stateVersion = "23.11";
 
   imports = [
-    ../home-common-base.nix
+    # ../home-common-base.nix
+    ../home-common-desktop.nix
     ../../user/lang/java.nix
     # ../../user/app/obs/obs.nix
     # ../../user/app/vlc/vlc.nix

@@ -9,8 +9,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common-base.nix
-    # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
+    # ../common-base.nix
+    ../common-desktop.nix
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
   system.stateVersion = "25.05";
