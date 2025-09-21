@@ -11,6 +11,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../common-desktop.nix
+    ../../system/custom/wii-u-gc-adapter.nix
     # ../../system/steam.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
@@ -80,6 +81,9 @@
   services.atftpd.enable = true;
 
   services.desktopManager.plasma6.enable = true;
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # services.nfs.server.enable = true;
   # services.nfs.server.exports = ''

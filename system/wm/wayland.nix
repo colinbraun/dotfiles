@@ -9,16 +9,17 @@
 
   environment.systemPackages = [
     pkgs.wayland
-    (pkgs.sddm-chili-theme.override {
-      themeConfig = {
-        background = ../../user/wm/wallpaper.png;
-        ScreenWidth = 1920;
-        ScreenHeight = 1080;
-        blur = true;
-        recursiveBlurLoops = 3;
-        recursiveBlurRadius = 5;
-      };
-    })
+    pkgs.sddm-chili-theme
+    # (pkgs.sddm-chili-theme.override {
+    #   themeConfig = {
+    #     # background = ../../user/wm/wallpaper.png;
+    #     ScreenWidth = 1920;
+    #     ScreenHeight = 1080;
+    #     blur = true;
+    #     recursiveBlurLoops = 3;
+    #     recursiveBlurRadius = 5;
+    #   };
+    # })
   ];
 
   # Configure xwayland
