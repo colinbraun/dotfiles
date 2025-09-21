@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.stateVersion = "23.11";
 
@@ -9,7 +9,12 @@
     # ../../user/app/obs/obs.nix
     # ../../user/app/vlc/vlc.nix
     # ../../user/games/prismlauncher.nix
+    ../../user/games/retroarch.nix
     # ../../user/lang/python.nix
     # ../../user/udiskie.nix
+  ];
+
+  home.packages = with pkgs; [
+    dolphin-emu
   ];
 }

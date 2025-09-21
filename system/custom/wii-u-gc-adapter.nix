@@ -26,7 +26,7 @@ let
 in
 {
   systemd.services."wii-u-gc-adapter" = {
-    enable = false; # Just start the service yourself if you want to use it
+    enable = true; # Just start the service yourself if you want to use it
     description = "USB Wii U Gamecube Adapter Manager";
     serviceConfig = {
       Type = "simple";
