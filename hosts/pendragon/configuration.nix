@@ -12,7 +12,7 @@
     ./hardware-configuration.nix
     ../common-desktop.nix
     ../../system/custom/wii-u-gc-adapter.nix
-    # ../../system/steam.nix
+    ../../system/steam.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
