@@ -80,11 +80,6 @@
 
   services.atftpd.enable = true;
 
-  services.desktopManager.plasma6.enable = true;
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
   # services.nfs.server.enable = true;
   # services.nfs.server.exports = ''
   #   /srv/nfs/rootfs *(rw,sync,no_subtree_check,no_root_squash)
