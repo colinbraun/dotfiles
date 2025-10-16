@@ -9,10 +9,10 @@
 {
   imports = [
     ./hardware-configuration.nix
-    # ../common-base.nix
-    ../common-desktop.nix
-    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
-    ../../system/custom/wii-u-gc-adapter.nix
+    ../common-base.nix
+    # ../common-desktop.nix
+    # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
+    # ../../system/custom/wii-u-gc-adapter.nix
   ];
 
   system.stateVersion = "25.05";
