@@ -8,6 +8,9 @@ let
   myAliases = {
     ag = "rg";
     c = "clear";
+    cb = "cargo build";
+    cc = "cargo clean";
+    cr = "cargo run";
     f = "find -iname";
     ga = "git add";
     gau = "git add --update";
