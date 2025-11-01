@@ -13,12 +13,16 @@ let
     cr = "cargo run";
     f = "find -iname";
     ga = "git add";
+    gam = "git am";
+    gam3 = "git am --3way";
+    gamc = "git am --continue";
     gau = "git add --update";
     gb = "git branch";
     gbl = "git blame -w";
     gc = "git commit --verbose";
     gcl = "git clean";
     gco = "git checkout";
+    gcp = "git cherry-pick";
     gd = "git diff";
     gf = "git fetch";
     gfa = "git fetch --all";

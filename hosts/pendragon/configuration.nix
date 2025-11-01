@@ -79,9 +79,10 @@
   };
 
   services.atftpd.enable = true;
+  services.atftpd.root = "/tftpboot";
 
-  # services.nfs.server.enable = true;
-  # services.nfs.server.exports = ''
-  #   /srv/nfs/rootfs *(rw,sync,no_subtree_check,no_root_squash)
-  # '';
+  services.nfs.server.enable = true;
+  services.nfs.server.exports = ''
+    /srv/nfs/rootfs *(rw,sync,no_subtree_check,no_root_squash)
+  '';
 }
