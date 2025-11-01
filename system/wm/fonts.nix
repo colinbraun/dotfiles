@@ -11,7 +11,7 @@
       # inconsolata-nerdfont
       # iosevka
       # font-awesome
-      ubuntu_font_family
+      ubuntu-classic
       # terminus_font
     ];
     fontconfig.defaultFonts = {
