@@ -23,9 +23,6 @@
     };
     extraCompatPackages = [ pkgs.proton-ge-bin ];
   };
-  environment.systemPackages = [
-    pkgs.mangohud
-  ];
 
   programs.gamemode.enable = true;
 }
