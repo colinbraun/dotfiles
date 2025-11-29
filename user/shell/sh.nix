@@ -39,7 +39,6 @@ let
     gp = "git push";
     gr = "git remote";
     grb = "git rebase";
-    grbf = "git add -u; git commit -m Fix; git rebase -i HEAD~2";
     grst = "git reset";
     grsth = "git reset --hard";
     gs = "git status";
@@ -203,6 +202,16 @@ in
 
       function vf() {
         vi $(find -iname "$1")
+      }
+
+      function grbf() {
+        local git_status=$(git status)
+        if echo $git_status | grep 'Changes not staged' || echo $git_status | grep 'working tree clean'; then
+          return 1
+        fi
+        local old_commit_message=$(git log -1 --pretty=format:%B)
+        git reset --soft HEAD~
+        git commit -m "$old_commit_message"
       }
 
       function _zsh_rebuild() {
