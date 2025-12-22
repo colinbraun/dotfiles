@@ -13,6 +13,7 @@ vim.o.cursorline = true          -- slightly color the line the cursor is on
 vim.o.cursorcolumn = true        -- slightly color the column the cursor is on
 vim.o.clipboard = "unnamedplus"  -- yank/delete into system clipboard
 vim.o.list = true
+vim.o.scrolloff = 3
 --vim.o.listchars = "tab:⇢⇥,trail:⎵,eol:↩"
 vim.o.listchars = "tab:⇢⇥,trail:⎵"
 vim.o.wrap = true
