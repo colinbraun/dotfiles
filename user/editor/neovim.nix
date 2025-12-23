@@ -13,6 +13,7 @@
     plugins = with pkgs.vimPlugins; [
       cmp-nvim-lsp
       cmp_luasnip
+      conform-nvim
       crates-nvim
       friendly-snippets
       gitsigns-nvim
@@ -25,7 +26,6 @@
       nabla-nvim
       neogit
       noice-nvim
-      none-ls-nvim
       nvim-autopairs
       nvim-cmp
       nvim-lspconfig
