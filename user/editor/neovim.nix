@@ -17,6 +17,7 @@
       crates-nvim
       friendly-snippets
       gitsigns-nvim
+      harpoon2
       indent-blankline-nvim
       lspkind-nvim # VSCode-like pictograms for LSP
       lualine-nvim

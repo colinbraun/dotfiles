@@ -21,6 +21,7 @@
       "uinput"
       "lp"
       "dialout"
+      "podman"
     ];
     packages = [ ];
   };

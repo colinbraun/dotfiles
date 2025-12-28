@@ -4,10 +4,12 @@
   home.packages = with pkgs; [
     btop
     fastfetch
+    fd
     ripgrep
     rsync
     tree
     unzip
+    yazi
     zip
   ];
 
