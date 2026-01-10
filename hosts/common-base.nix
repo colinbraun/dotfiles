@@ -22,6 +22,7 @@
       "lp"
       "dialout"
       "podman"
+      "docker"
     ];
     packages = [ ];
   };
