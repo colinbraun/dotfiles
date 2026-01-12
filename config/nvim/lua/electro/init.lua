@@ -45,6 +45,7 @@ rs("treesitter") -- set up treesitter
 rs("trouble")    -- load trouble
 rs("whichkey")   -- set up whichkey, which provides help as you type
 rs("autopairs")
+rs("harpoon")
 
 -- rs("testing")      -- set up a test runner
 -- rs("precognition") -- set up precognition, which helps with motions
