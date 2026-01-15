@@ -185,7 +185,8 @@ in
 
 
       # Window rules
-      windowrule=opacity 0.95,title:(.*)(Discord)$
+      # windowrule=opacity 0.95,title:(.*)(Discord)$
+      windowrule = match:class discord opacity 0.95 workspace 3 silent
       exec-once=swaybg --image "${wallpaperPath}"
       exec-once=pypr
       # exec-once=swww init
@@ -202,7 +203,7 @@ in
       # windowrule = workspace 1, ${userSettings.term}
       # windowrule = workspace 2, ${userSettings.browser}
       # Need this b/c discord starts up in a different way
-      windowrule = workspace 3 silent, class:discord
+      # windowrule = workspace 3 silent, class:discord
 
 
       # Pyprland
@@ -212,11 +213,12 @@ in
       bind=SUPER,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
       $scratchpadsize = size 80% 85%
 
-      $scratchpad = class:^(scratchpad)$
-      windowrule = float,$scratchpad
-      windowrule = $scratchpadsize,$scratchpad
-      windowrule = workspace special silent,$scratchpad
-      windowrule = center,$scratchpad
+      windowrule = match:class ^(scratchpad)$ center float $scratchpadsize workspace special
+      # $scratchpad = class:^(scratchpad)$
+      # windowrule = float,$scratchpad
+      # windowrule = $scratchpadsize,$scratchpad
+      # windowrule = workspace special silent,$scratchpad
+      # windowrule = center,$scratchpad
 
       # Cursors
       env = XCURSOR_SIZE,24

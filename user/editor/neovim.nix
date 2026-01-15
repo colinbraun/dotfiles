@@ -5,6 +5,7 @@
     nixd
     nixfmt
     ripgrep # Faster grep, like silver searcher (ag)
+    tree-sitter
   ];
 
   programs.neovim = {
