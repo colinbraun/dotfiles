@@ -12,7 +12,7 @@ let
     cb = "cargo build";
     cc = "cargo clean";
     cr = "cargo run";
-    f = "find -iname";
+    f = "fd";
     ga = "git add";
     gam = "git am";
     gam3 = "git am --3way";
@@ -68,7 +68,7 @@ let
     vi = "nvim";
     vim = "nvim";
     ze = "vi ~/.dotfiles/user/shell/sh.nix";
-    zl = "_zsh_rebuild && source ~/.zshrc";
+    zl = "_zsh_rebuild && source $ZDOTDIR/.zshrc";
   };
 in
 {
@@ -77,6 +77,7 @@ in
   ];
 
   home.packages = with pkgs; [
+    fd
     fzf
     zsh-fzf-tab
   ];
@@ -106,7 +107,7 @@ in
     autosuggestion.enable = true;
     shellAliases = myAliases;
 
-    initExtraFirst = '''';
+    initExtraFirst = "";
     initContent = ''
       # zsh-syntax-highlighting, zsh-completions, and zsh-autosuggestions
       # should already be setup by HM.
@@ -214,6 +215,11 @@ in
         local old_commit_message=$(git log -1 --pretty=format:%B)
         git reset --soft HEAD~
         git commit -m "$old_commit_message"
+      }
+
+      # (s)ymbolic link (t)o (f)ile - Convert a symbolic link to a real file
+      function stf() {
+        cp --remove-destination "$(readlink "$1")" "$1"
       }
 
       function _zsh_rebuild() {
