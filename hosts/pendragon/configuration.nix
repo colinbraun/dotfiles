@@ -86,13 +86,13 @@
     /srv/nfs/rootfs *(rw,sync,no_subtree_check,no_root_squash)
   '';
 
-  virtualisation = {
-    docker.enable = true;
-    containers.enable = true;
-    podman = {
-      enable = true;
-      # dockerCompat = true;
-      defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
-    };
-  };
+  # virtualisation = {
+  #   docker.enable = true;
+  #   containers.enable = true;
+  #   podman = {
+  #     enable = true;
+  #     # dockerCompat = true;
+  #     defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+  #   };
+  # };
 }
