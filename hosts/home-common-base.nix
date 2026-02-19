@@ -41,12 +41,9 @@
     desktop = null;
     publicShare = null;
     extraConfig = {
-      XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
-      XDG_ARCHIVE_DIR = "${config.home.homeDirectory}/Archive";
-      # XDG_VM_DIR = "${config.home.homeDirectory}/Machines";
-      # XDG_ORG_DIR = "${config.home.homeDirectory}/Org";
-      XDG_PODCAST_DIR = "${config.home.homeDirectory}/Media/Podcasts";
-      XDG_BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
+      DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
+      ARCHIVE_DIR = "${config.home.homeDirectory}/Archive";
+      BOOK_DIR = "${config.home.homeDirectory}/Media/Books";
     };
   };
   xdg.mime.enable = true;
