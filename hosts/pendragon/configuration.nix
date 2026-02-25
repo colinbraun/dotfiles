@@ -19,6 +19,7 @@
   networking.hostName = "pendragon";
 
   boot = {
+
     # Bootloader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -34,6 +35,7 @@
     ];
     extraModprobeConfig = ''
       options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+      options mt7921e disable_aspm=1
     '';
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
