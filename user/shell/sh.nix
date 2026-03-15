@@ -12,7 +12,7 @@ let
     cb = "cargo build";
     cc = "cargo clean";
     cr = "cargo run";
-    f = "fd";
+    f = "fd --hidden";
     ga = "git add";
     gam = "git am";
     gam3 = "git am --3way";
