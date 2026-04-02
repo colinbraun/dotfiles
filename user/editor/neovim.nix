@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.packages = with pkgs; [
     lua-language-server
@@ -43,5 +43,8 @@
       vim-tmux-navigator
       which-key-nvim
     ];
+
+    # Manage our own init.lua file
+    initLua = lib.mkForce "";
   };
 }
