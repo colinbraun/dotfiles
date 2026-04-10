@@ -90,10 +90,10 @@
 
   services.udev.extraRules = ''
     # Match the "Lulu" string directly for hidraw permissions
-    KERNEL=="hidraw*", ATTRS{product}=="*lulu*", MODE="0666", TAG+="uaccess", GROUP="users"
+    KERNEL=="hidraw*", ATTRS{product}=="*Keebio*", MODE="0666", TAG+="uaccess", GROUP="users"
 
     # Standard Vendor/Product match for Boardsource (lulu / Lily58 SMT)
-    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4273", ATTRS{idProduct}=="7685", MODE="0666", TAG+="uaccess", GROUP="users"
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="cb10", ATTRS{idProduct}=="1556", MODE="0666", TAG+="uaccess", GROUP="users"
   '';
   # virtualisation = {
   #   docker.enable = true;
