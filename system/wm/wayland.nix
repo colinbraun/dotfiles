@@ -7,21 +7,6 @@
     ./fonts.nix
   ];
 
-  environment.systemPackages = [
-    pkgs.wayland
-    pkgs.sddm-chili-theme
-    # (pkgs.sddm-chili-theme.override {
-    #   themeConfig = {
-    #     # background = ../../user/wm/wallpaper.png;
-    #     ScreenWidth = 1920;
-    #     ScreenHeight = 1080;
-    #     blur = true;
-    #     recursiveBlurLoops = 3;
-    #     recursiveBlurRadius = 5;
-    #   };
-    # })
-  ];
-
   # Configure xwayland
   services = {
     xserver = {
@@ -35,11 +20,10 @@
       };
     };
 
-    displayManager.sddm = {
-      enable = true;
-      wayland.enable = true;
-      enableHidpi = true;
-      theme = "chili";
-    };
+    displayManager.gdm.enable = true;
+    # Strip down GNOME to just the login manager
+    gnome.core-apps.enable = false;
+    gnome.core-shell.enable = true; # Required for GDM to render
   };
+
 }
