@@ -9,7 +9,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../common-base.nix
+    ../common-desktop.nix
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
   ];
 
   system.stateVersion = "25.05";
@@ -66,4 +67,5 @@
     };
   };
 
+  services.desktopManager.plasma6.enable = true;
 }
