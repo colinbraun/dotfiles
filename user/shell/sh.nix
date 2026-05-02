@@ -60,6 +60,7 @@ let
     less = "less -Ri"; # Show colors, smart case
     ll = "ls -lh";
     ls = "ls --color";
+    nfu = "nix flake update --flake ~/.dotfiles";
     nrs = "sudo nixos-rebuild switch --flake ~/.dotfiles --print-build-logs --show-trace";
     nhs = "home-manager switch --flake ~/.dotfiles --show-trace --print-build-logs";
     o = "xdg-open";
