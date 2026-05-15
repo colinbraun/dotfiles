@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  home.stateVersion = "23.11";
+  home.stateVersion = "26.05";
 
   imports = [
     ../home-common-desktop.nix # Common configs for all machines with a desktop

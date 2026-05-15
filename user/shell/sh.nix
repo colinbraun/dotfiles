@@ -40,6 +40,8 @@ let
     gp = "git push";
     gr = "git remote";
     grb = "git rebase";
+    grbc = "git rebase --continue";
+    grs = "git restore";
     grst = "git reset";
     grsth = "git reset --hard";
     gs = "git status";
@@ -205,7 +207,7 @@ in
       }
 
       function vf() {
-        vi $(find -iname "$1")
+        nvim $(find -iname "$1")
       }
 
       function grbf() {
