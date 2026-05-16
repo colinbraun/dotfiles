@@ -10,25 +10,11 @@
   imports = [
     ./hardware-configuration.nix
     ../common-base.nix
-    # ../common-desktop.nix
-    # (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
-    # ../../system/custom/wii-u-gc-adapter.nix
   ];
 
   system.stateVersion = "25.05";
 
   networking.hostName = "turtwig";
-
-  # Select additional kernel modules to install (not automatically loaded)
-  # Can also select a specific kernel to use if desired
-  # boot.extraModulePackages = [
-  #   # Virtual camera for OBS
-  #   config.boot.kernelPackages.v4l2loopback
-  # ];
-  # # Modules to be automatically loaded in second stage of boot process
-  # boot.kernelModules = [
-  #   "v4l2loopback"
-  # ];
 
   # Device tree
   hardware.deviceTree.name = "rockchip/rk3588-orangepi-5-plus.dtb";
@@ -40,30 +26,6 @@
   boot = {
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackagesFor (
-    #   pkgs.buildLinux {
-    #     src = pkgs.fetchgit {
-    #       # url = "git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip.git";
-    #       url = "https://gitlab.collabora.com/hardware-enablement/rockchip-3588/linux.git";
-    #       deepClone = false;
-    #       hash = "sha256-kSkF85kVxVoJMlvWxX3GjDweuppHohhKY2djTauKp7c=";
-    #       rev = "3ae3a541e5a1a98ad0149dbcdfce2a85d4877bac";
-    #       # url = "https://git.kernel.org/torvalds/t/linux-6.14-rc7.tar.gz";
-    #       # hash = "sha256-ilYQOd9IxeYERlXPt3G5AU+9ffZ137zFK/Kfu3AR2Uw=";
-    #     };
-    #     version = "6.14.0";
-    #     ignoreConfigErrors = true;
-    #   }
-    # );
-
-    # fix zfs broken module
-    # supportedFilesystems = lib.mkForce [
-    #   "vfat"
-    #   "fat32"
-    #   "exfat"
-    #   "ext4"
-    #   "btrfs"
-    # ];
 
     loader = {
       grub.enable = false;
@@ -85,8 +47,6 @@
       "swapaccount=1"
     ];
   };
-
-  # services.desktopManager.plasma6.enable = true;
 
   networking.firewall.allowedTCPPorts = [
     22

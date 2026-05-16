@@ -39,15 +39,6 @@
     '';
     # Kernel
     kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackagesFor (
-    #   pkgs.buildLinux {
-    #     src = pkgs.fetchurl {
-    #       url = "https://git.kernel.org/torvalds/t/linux-6.14-rc7.tar.gz";
-    #       hash = "sha256-ilYQOd9IxeYERlXPt3G5AU+9ffZ137zFK/Kfu3AR2Uw=";
-    #     };
-    #     version = "6.14-rc7";
-    #   }
-    # );
   };
 
   # Misc things for this machine
@@ -95,13 +86,4 @@
     # Standard Vendor/Product match for Boardsource (lulu / Lily58 SMT)
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="cb10", ATTRS{idProduct}=="1556", MODE="0666", TAG+="uaccess", GROUP="users"
   '';
-  # virtualisation = {
-  #   docker.enable = true;
-  #   containers.enable = true;
-  #   podman = {
-  #     enable = true;
-  #     # dockerCompat = true;
-  #     defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
-  #   };
-  # };
 }

@@ -1,26 +1,5 @@
 WK = require("which-key")
 
-local lz_n = require("lz.n")
-
----A small helper function to lazily require.
----
----It is especially helpful together with
----@param modname string
----@return function
-local function rf(modname)
-  return function()
-    require(modname)
-  end
-end
-
-local this_module = ...
---print(this_module)
--- local this_module = ""
-
--- TODO: improve/fix this
---package.path = '/home/electro/.config/nvim/?.lua;' .. package.path
---print(package.path)
-
 ---A small helper function to require a submodule "relatively"
 ---@param submodule string
 ---@return unknown
@@ -46,12 +25,3 @@ rs("trouble")    -- load trouble
 rs("whichkey")   -- set up whichkey, which provides help as you type
 rs("autopairs")
 rs("harpoon")
-
--- rs("testing")      -- set up a test runner
--- rs("precognition") -- set up precognition, which helps with motions
--- rs("luasnip")    -- Snippet tool
--- rs("leap")         -- some easier motions
----
---lz_n.load({
---  { "startuptime", command = "StartUptime", after = rf("electro.startuptime"), },
---})

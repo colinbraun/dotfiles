@@ -23,7 +23,6 @@
       lspkind-nvim # VSCode-like pictograms for LSP
       lualine-nvim
       luasnip
-      lz-n
       markdown-nvim
       nabla-nvim
       neogit

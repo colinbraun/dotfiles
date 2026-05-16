@@ -34,12 +34,10 @@ in
     };
     wantedBy = [ "graphical.target" ];
   };
-  # Extra udev rules
-  # TODO: Consider changing this to use the dolphin-rules package
+  # udev rules for Wii U GameCube adapter (057e:0337)
   services.udev.extraRules = ''
     SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTRS{idVendor}=="057e", ATTRS{idProduct}=="0337", MODE="0666"
   '';
-  # Modules to be automatically loaded in second stage of boot process
   boot.kernelModules = [
     "uinput"
   ];

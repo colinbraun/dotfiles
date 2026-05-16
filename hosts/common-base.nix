@@ -79,7 +79,6 @@
   # Man pages / documentation is nice to have and not that much disk space
   documentation = {
     dev.enable = true;
-    # man.generateCaches = true;
     nixos.includeAllModules = true;
   };
 

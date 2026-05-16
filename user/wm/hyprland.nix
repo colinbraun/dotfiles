@@ -17,6 +17,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     settings = { };
     extraConfig = ''
       # See https://wiki.hyprland.org/Configuring/Monitors/
