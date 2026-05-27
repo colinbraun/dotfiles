@@ -20,10 +20,7 @@
       };
     };
 
-    displayManager.gdm.enable = true;
-    # Strip down GNOME to just the login manager
-    gnome.core-apps.enable = false;
-    gnome.core-shell.enable = true; # Required for GDM to render
+    displayManager.plasma-login-manager.enable = true;
   };
 
 }
