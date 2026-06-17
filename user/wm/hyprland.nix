@@ -256,9 +256,7 @@ in
     # hyprdim # Automatically dim windows in Hyprland when switching between them (active/non-active)
     swaybg
     # pinentry-gnome3 # Double check if interested
-    libsForQt5.qt5.qtwayland # Qt for wayland
     numbat # Convenient calculator tool with units
-    qt6.qtwayland # Does this package exist???
     slurp # Select region in wayland compositor
     # tesseract4 # OCR engine
     # wev # Wayland event viewer, a debugging tool
