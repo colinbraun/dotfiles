@@ -220,11 +220,6 @@ in
       # windowrule = $scratchpadsize,$scratchpad
       # windowrule = workspace special silent,$scratchpad
       # windowrule = center,$scratchpad
-
-      # Cursors
-      env = XCURSOR_SIZE,24
-      # env = HYPRCURSOR_THEME,rose-pine-hyprcursor
-      # env = HYPRCURSOR_SIZE,26
     '';
     xwayland = {
       enable = true;
@@ -320,10 +315,18 @@ in
   #   source = ./cursor/rose-pine-hyprcursor;
   # };
 
-  home.pointerCursor.gtk.enable = true;
-  home.pointerCursor.package = pkgs.yaru-theme;
-  home.pointerCursor.name = "Yaru";
-  home.pointerCursor.size = 24;
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+
+    hyprcursor = {
+      enable = true;
+      size = 24;
+    };
+  };
 
   programs.waybar = {
     enable = true;

@@ -11,8 +11,6 @@
       package = pkgs.gnome-themes-extra;
     };
     gtk4.theme = config.gtk.theme;
-    # cursorTheme.package = pkgs.bibata-cursors;
-    # cursorTheme.name = "Bibata-Modern-Ice";
   };
   qt = {
     enable = true;

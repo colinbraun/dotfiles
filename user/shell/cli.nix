@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     btop
+    delta
     fastfetch
     fd
     ripgrep

@@ -15,14 +15,15 @@
     isNormalUser = true;
     description = userSettings.name;
     extraGroups = [
-      "networkmanager"
-      "wheel"
-      "usb"
-      "uinput"
-      "lp"
       "dialout"
-      "podman"
       "docker"
+      "libvirtd"
+      "lp"
+      "networkmanager"
+      "podman"
+      "uinput"
+      "usb"
+      "wheel"
     ];
     packages = [ ];
   };

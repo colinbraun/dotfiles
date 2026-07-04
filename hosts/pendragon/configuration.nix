@@ -86,4 +86,15 @@
     # Standard Vendor/Product match for Boardsource (lulu / Lily58 SMT)
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="cb10", ATTRS{idProduct}=="1556", MODE="0666", TAG+="uaccess", GROUP="users"
   '';
+
+  environment.systemPackages = with pkgs; [
+    # Forces the compiler to link breeze icons/cursors to /run/current-system/sw/share/icons
+    kdePackages.breeze
+  ];
+  systemd.services.plasmalogin.environment = {
+    XCURSOR_PATH = "/run/current-system/sw/share/icons";
+    XCURSOR_THEME = "breeze_cursors";
+    XCURSOR_SIZE = "24";
+    WLR_NO_HARDWARE_CURSORS = "1"; # Forces the GPU to draw the cursor via software buffer
+  };
 }
