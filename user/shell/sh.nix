@@ -42,6 +42,7 @@ let
     grb = "git rebase";
     grbc = "git rebase --continue";
     grs = "git restore";
+    grsh = "git restore --staged --worktree";
     grst = "git reset";
     grsth = "git reset --hard";
     gs = "git status";

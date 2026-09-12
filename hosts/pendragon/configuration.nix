@@ -97,4 +97,6 @@
     XCURSOR_SIZE = "24";
     WLR_NO_HARDWARE_CURSORS = "1"; # Forces the GPU to draw the cursor via software buffer
   };
+
+  services.flatpak.enable = true;
 }
