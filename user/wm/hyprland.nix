@@ -1,226 +1,13 @@
-{
-  config,
-  pkgs,
-  userSettings,
-  ...
-}:
-let
-  wallpaperPath = "${config.xdg.userDirs.pictures}/Wallpapers/wallpaper.png";
-in
+{ pkgs, userSettings, ... }:
 {
   imports = [
     ../app/terminal/kitty.nix
-    # ../app/terminal/ghostty.nix
   ];
-
-  home.file."${wallpaperPath}".source = ./super-mario-world-map-by-matt-vince-1920x1080.png;
 
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "hyprlang";
-    settings = { };
-    extraConfig = ''
-      # See https://wiki.hyprland.org/Configuring/Monitors/
-      # monitor=,preferred,auto,auto
-      monitor=eDP-1,1920x1080,0x0,1
-
-      # Variables
-      $terminal = ${userSettings.term}
-      $fileManager = ${userSettings.fileManager}
-      $menu = fuzzel
-      $mainMod = SUPER
-
-      # Some default env vars.
-      env = QT_QPA_PLATFORMTHEME,qt6ct # change to qt6ct if you have that
-
-      input {
-          kb_layout = us
-          kb_variant =
-          kb_model =
-          kb_options =
-          kb_rules =
-
-          follow_mouse = 2
-
-          touchpad {
-              natural_scroll = true
-          }
-
-          sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-      }
-
-      general {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-          # gaps_in = 2
-          gaps_in = 1
-          # gaps_out = 5
-          gaps_out = 0
-          border_size = 2
-          # col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-          # col.active_border = rgba(6300a9ee) rgba(000059ee) 45deg
-          col.active_border = rgba(bf00ffee) rgba(000059ee) 45deg
-          col.inactive_border = rgba(595959aa)
-
-          layout = master
-
-          # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-          allow_tearing = false
-          # cursor_inactive_timeout = 5
-      }
-
-      decoration {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-          # rounding = 10
-
-          blur {
-              enabled = true
-              size = 3
-              passes = 1
-
-              vibrancy = 0.1696
-          }
-
-          shadow {
-              range = 4
-              render_power = 3
-              color = rgba(1a1a1aee)
-          }
-
-      }
-
-      animations {
-          enabled = true
-
-          bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-
-          animation = windows, 1, 7, myBezier
-          animation = windowsOut, 1, 7, default, popin 80%
-          animation = border, 1, 10, default
-          animation = borderangle, 1, 8, default
-          animation = fade, 1, 7, default
-          animation = workspaces, 1, 6, default
-      }
-
-      master {
-          # Make master window take up half the space. Default is 0.55.
-          mfact = 0.5
-      }
-
-      misc {
-          # See https://wiki.hyprland.org/Configuring/Variables/ for more
-          force_default_wallpaper = 0 # Set to 0 to disable the anime mascot wallpapers
-          disable_hyprland_logo = true
-          enable_anr_dialog = false # ANR = Application Not Responding
-      }
-
-      ecosystem {
-          no_update_news = true
-          no_donation_nag = true
-      }
-
-
-      # BINDS
-      bind = $mainMod, RETURN, exec, $terminal
-      bind = $mainMod, Q, killactive
-      bind = $mainMod, M, exit
-      bind = $mainMod, E, exec, $fileManager
-      bind = $mainMod, V, togglefloating
-      bind = $mainMod, D, exec, $menu
-      bind = $mainMod, I, layoutmsg, orientationcycle left top
-
-      # Move focus
-      # bind = $mainMod, h, workspace, e-1
-      # bind = $mainMod, l, workspace, e+1
-      # bind = $mainMod, j, cyclenext
-      # bind = $mainMod, k, cyclenext, prev
-      bind = $mainMod, h, movefocus, l
-      bind = $mainMod, l, movefocus, r
-      bind = $mainMod, j, movefocus, d
-      bind = $mainMod, k, movefocus, u
-
-      # Switch workspaces with mainMod + [0-9]
-      bind = $mainMod, 1, workspace, 1
-      bind = $mainMod, 2, workspace, 2
-      bind = $mainMod, 3, workspace, 3
-      bind = $mainMod, 4, workspace, 4
-      bind = $mainMod, 5, workspace, 5
-      bind = $mainMod, 6, workspace, 6
-      bind = $mainMod, 7, workspace, 7
-      bind = $mainMod, 8, workspace, 8
-      bind = $mainMod, 9, workspace, 9
-      bind = $mainMod, 0, workspace, 10
-
-      # Move active window to a workspace with mainMod + SHIFT + [0-9]
-      bind = $mainMod SHIFT, 1, movetoworkspace, 1
-      bind = $mainMod SHIFT, 2, movetoworkspace, 2
-      bind = $mainMod SHIFT, 3, movetoworkspace, 3
-      bind = $mainMod SHIFT, 4, movetoworkspace, 4
-      bind = $mainMod SHIFT, 5, movetoworkspace, 5
-      bind = $mainMod SHIFT, 6, movetoworkspace, 6
-      bind = $mainMod SHIFT, 7, movetoworkspace, 7
-      bind = $mainMod SHIFT, 8, movetoworkspace, 8
-      bind = $mainMod SHIFT, 9, movetoworkspace, 9
-      bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
-      # Scroll through existing workspaces with mainMod + scroll
-      bind = $mainMod, mouse_down, workspace, e-1
-      bind = $mainMod, mouse_up, workspace, e+1
-
-      # Screenshot
-      bindi = , Print, exec, grim -g "$(slurp -d)" - | wl-copy
-
-      # Move/resize windows with mainMod + LMB/RMB and dragging
-      bindm = $mainMod, mouse:272, movewindow
-      bindm = $mainMod, mouse:273, resizewindow
-
-      # Volume
-      binde=, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
-      binde=, XF86AudioLowerVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
-
-      # Brightness
-      binde=,XF86MonBrightnessUp,exec,brightnessctl set +5%
-      binde=,XF86MonBrightnessDown,exec,brightnessctl -n240 set 5%-
-
-
-
-      # Window rules
-      # windowrule=opacity 0.95,title:(.*)(Discord)$
-      windowrule = match:class discord opacity 0.95 workspace 3 silent
-      exec-once=swaybg --image "${wallpaperPath}"
-      exec-once=pypr
-      # exec-once=swww init
-      # ; swww img ~/Downloads/output.gif
-      exec-once=waybar
-      # exec-once=hyprctl setcursor rose-pine-hyprcursor 26
-      # exec-once=${userSettings.term}
-      # exec-once=discord
-      # # Start up these programs in separate workspaces
-      exec-once=[workspace 1 silent] ${userSettings.term}
-      exec-once=[workspace 2 silent] ${userSettings.browser}
-      exec-once=[workspace 3 silent] discord
-
-      # windowrule = workspace 1, ${userSettings.term}
-      # windowrule = workspace 2, ${userSettings.browser}
-      # Need this b/c discord starts up in a different way
-      # windowrule = workspace 3 silent, class:discord
-
-
-      # Pyprland
-      bind=SUPER,Z,exec,pypr toggle term && hyprctl dispatch bringactivetotop
-      bind=SUPER,N,exec,pypr toggle numbat && hyprctl dispatch bringactivetotop
-      # bind=SUPER,D,exec,hypr-element
-      bind=SUPER,code:172,exec,pypr toggle pavucontrol && hyprctl dispatch bringactivetotop
-      $scratchpadsize = size 80% 85%
-
-      windowrule = match:class ^(scratchpad)$ center float $scratchpadsize workspace special
-      # $scratchpad = class:^(scratchpad)$
-      # windowrule = float,$scratchpad
-      # windowrule = $scratchpadsize,$scratchpad
-      # windowrule = workspace special silent,$scratchpad
-      # windowrule = center,$scratchpad
-    '';
+    extraConfig = builtins.readFile ./hyprland.conf;
     xwayland = {
       enable = true;
     };
@@ -233,87 +20,26 @@ in
     fuzzel # Application launcher like rofi
     grim # Grab imges from wayland compositor
     gsettings-desktop-schemas # Is this needed???
-    # keepmenu # Dmenu/Rofi/Fuzzel/... frontend for Keepass databases
-    kitty
-    # feh # An image viewer
+    hyprsunset
     killall
+    kitty
     libva-utils # Is this needed???
-    pavucontrol # Pulseaudio volume control
+    numbat # Convenient calculator tool with units
     pamixer # Pulseaduio command-line mixer
+    pavucontrol # Pulseaudio volume control
     polkit_gnome
     pyprland
-    wl-clipboard # Command line copy/paste
-    # hyprcursor
-    # hyprpicker # Color picker
-    # hypridle # Hyprland idle daemon
-    # hyprlock # Hyprland's GPU-accelerated screen locking utility
-    # hyprnome # Gnome-like workspace switching in hyprland
-    # hyprdim # Automatically dim windows in Hyprland when switching between them (active/non-active)
-    swaybg
-    # pinentry-gnome3 # Double check if interested
-    numbat # Convenient calculator tool with units
     slurp # Select region in wayland compositor
-    # tesseract4 # OCR engine
-    # wev # Wayland event viewer, a debugging tool
+    swaybg
+    wl-clipboard # Command line copy/paste
     wlr-randr # Is this needed?
-    # wlsunset
-    hyprsunset
     wtype # Xdotool type for wayland
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     xdg-utils
     ydotool
-    # zenity # Tool to display dialogs from the commandline and shell scripts
-    # (pkgs.writeScriptBin "screenshot-ocr" ''
-    #   #!/bin/sh
-    #   imgname="/tmp/screenshot-ocr-$(date +%Y%m%d%H%M%S).png"
-    #   txtname="/tmp/screenshot-ocr-$(date +%Y%m%d%H%M%S)"
-    #   txtfname=$txtname.txt
-    #   grim -g "$(slurp)" $imgname;
-    #   tesseract $imgname $txtname;
-    #   wl-copy -n < $txtfname
-    # '')
-    # (pkgs.writeScriptBin "sct" ''
-    #   #!/bin/sh
-    #   killall wlsunset &> /dev/null;
-    #   if [ $# -eq 1 ]; then
-    #     temphigh=$(( $1 + 1 ))
-    #     templow=$1
-    #     wlsunset -t $templow -T $temphigh &> /dev/null &
-    #   else
-    #     killall wlsunset &> /dev/null;
-    #   fi
-    # '')
-    # (pkgs.writeScriptBin "obs-notification-mute-daemon" ''
-    #   #!/bin/sh
-    #   while true; do
-    #     if pgrep -x .obs-wrapped > /dev/null;
-    #       then
-    #         pkill -STOP fnott;
-    #         #emacsclient --eval "(org-yaap-mode 0)";
-    #       else
-    #         pkill -CONT fnott;
-    #         #emacsclient --eval "(if (not org-yaap-mode) (org-yaap-mode 1))";
-    #     fi
-    #     sleep 10;
-    #   done
-    # '')
-    # (pkgs.writeScriptBin "suspend-unless-render" ''
-    #   #!/bin/sh
-    #   if pgrep -x nixos-rebuild > /dev/null || pgrep -x home-manager > /dev/null || pgrep -x kdenlive > /dev/null || pgrep -x FL64.exe > /dev/null || pgrep -x blender > /dev/null || pgrep -x flatpak > /dev/null;
-    #   then echo "Shouldn't suspend"; sleep 10; else echo "Should suspend"; systemctl suspend; fi
-    # '')
   ];
-
-  # home.file.".icons" = {
-  #   recursive = true;
-  #   source = ./cursor/rose-pine-hyprcursor;
-  # };
-  # home.file.".icons/default" = {
-  #   recursive = true;
-  #   source = ./cursor/rose-pine-hyprcursor;
-  # };
 
   home.pointerCursor = {
     enable = true;
@@ -612,19 +338,10 @@ in
     command = "${userSettings.term} --class scratchpad -e numbat"
     margin = 50
   '';
-  # [scratchpads.pavucontrol]
-  # command = "pavucontrol"
-  # margin = 50
-  # unfocus = "hide"
-  # animation = "fromTop"
 
-  # services.udiskie.enable = true; # Removable disk automounter
-  # services.udiskie.tray = "always";
   programs.fuzzel.enable = true;
   programs.fuzzel.settings = {
     main = {
-      # font = userSettings.font + ":size=13";
-      # terminal = "${pkgs.kitty}/bin/kitty";
       terminal = "${userSettings.term}";
     };
     border = {
@@ -638,9 +355,6 @@ in
       anchor = "bottom-right";
       stacking-order = "top-down";
       min-width = 400;
-      # title-font = userSettings.font + ":size=14";
-      # summary-font = userSettings.font + ":size=12";
-      # body-font = userSettings.font + ":size=11";
       border-size = 0;
     };
   };
