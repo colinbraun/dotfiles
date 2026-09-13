@@ -1,13 +1,23 @@
-{ pkgs, userSettings, ... }:
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}:
+let
+  wallpaperPath = "${config.xdg.userDirs.pictures}/Wallpapers/wallpaper.png";
+in
 {
   imports = [
     ../app/terminal/kitty.nix
   ];
 
+  home.file."${wallpaperPath}".source = ./super-mario-world-map-by-matt-vince-1920x1080.png;
+
   wayland.windowManager.hyprland = {
     enable = true;
-    configType = "hyprlang";
-    extraConfig = builtins.readFile ./hyprland.conf;
+    configType = "lua";
+    extraConfig = builtins.readFile ./hyprland.lua;
     xwayland = {
       enable = true;
     };
