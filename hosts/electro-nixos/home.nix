@@ -9,7 +9,6 @@
     ../../user/app/vlc/vlc.nix
     ../../user/editor/neovim.nix
     ../../user/games/retroarch.nix
-    ../../user/lang/java.nix
     ../../user/lang/python.nix
     ../../user/udiskie.nix
   ];
