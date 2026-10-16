@@ -111,7 +111,6 @@ in
     autosuggestion.enable = true;
     shellAliases = myAliases;
 
-    initExtraFirst = "";
     initContent = ''
       # zsh-syntax-highlighting, zsh-completions, and zsh-autosuggestions
       # should already be setup by HM.
