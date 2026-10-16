@@ -68,4 +68,8 @@
   };
 
   services.desktopManager.plasma6.enable = true;
+
+  systemd.tmpfiles.rules = [
+    "w /sys/class/leds/green:indicator-2/brightness - - - - 32"
+  ];
 }
