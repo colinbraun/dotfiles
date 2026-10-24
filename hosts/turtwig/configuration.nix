@@ -46,6 +46,10 @@
       "cgroup_memory=1"
       "cgroup_enable=memory"
       "swapaccount=1"
+
+      # Note: Orange Pi 5 Plus typically names its primary ports HDMI-A-1 or HDMI-A-2.
+      # The 'M' flag forces the driver to generate standard VESA CVT timings.
+      "video=HDMI-A-2:1920x1200M@60"
     ];
   };
 
@@ -60,12 +64,40 @@
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = [ "electro" ]; # Allows all users by default. Can be [ "user1" "user2" ]
+      AllowUsers = [
+        "electro"
+        "skeletor"
+      ]; # Allows all users by default. Can be [ "user1" "user2" ]
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
+
+  # Second admin user, turtwig only. Same groups as electro (wheel = sudo).
+  # Password is set imperatively with `sudo passwd skeletor` after rebuild.
+  users.users.skeletor = {
+    isNormalUser = true;
+    description = "Skeletor";
+    extraGroups = [
+      "dialout"
+      "docker"
+      "libvirtd"
+      "lp"
+      "networkmanager"
+      "podman"
+      "uinput"
+      "usb"
+      "wheel"
+    ];
+    packages = [ ];
+  };
+
+  # common-base.nix sets trusted-users = [ "electro" ]; override here to include both.
+  nix.settings.trusted-users = [
+    "electro"
+    "skeletor"
+  ];
 
   services.desktopManager.plasma6.enable = true;
 

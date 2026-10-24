@@ -24,6 +24,12 @@
         fileManager = "thunar";
       };
 
+      # Second admin user, turtwig only. Same tools, different username.
+      skeletorSettings = userSettings // {
+        username = "skeletor";
+        name = "Skeletor";
+      };
+
       pkgs = import inputs.nixpkgs {
         system = systemSettings.system;
         config.allowUnfree = true;
@@ -100,6 +106,17 @@
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
+          };
+        };
+        "skeletor@turtwig" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsAArch64;
+          modules = [
+            ./hosts/turtwig/skeletor-home.nix
+          ];
+          extraSpecialArgs = {
+            inherit systemSettings;
+            inherit inputs;
+            userSettings = skeletorSettings;
           };
         };
       };
