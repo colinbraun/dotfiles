@@ -49,7 +49,7 @@
 
       # Note: Orange Pi 5 Plus typically names its primary ports HDMI-A-1 or HDMI-A-2.
       # The 'M' flag forces the driver to generate standard VESA CVT timings.
-      "video=HDMI-A-2:1920x1200M@60"
+      "video=HDMI-A-1:1920x1200M@60"
     ];
   };
 
@@ -103,5 +103,25 @@
 
   systemd.tmpfiles.rules = [
     "w /sys/class/leds/green:indicator-2/brightness - - - - 32"
+  ];
+
+  # Enable Bluetooth
+  hardware.bluetooth = {
+    enable = true; # Enables support for Bluetooth
+    powerOnBoot = true; # Powers up the default Bluetooth controller on boot
+    settings = {
+      General = {
+        Experimental = true; # Optional: enables newer Bluetooth capabilities
+        FastConnectable = true; # Optional: faster reconnection
+      };
+      Policy = {
+        AutoEnable = true; # Automatically power up controllers
+      };
+    };
+  };
+
+  # Ensure KDE Plasma's BlueDevil Bluetooth integration is installed (usually present by default)
+  environment.systemPackages = with pkgs; [
+    kdePackages.bluedevil # KDE Plasma Bluetooth applet/backend
   ];
 }
