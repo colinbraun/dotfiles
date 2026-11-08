@@ -109,19 +109,5 @@
   hardware.bluetooth = {
     enable = true; # Enables support for Bluetooth
     powerOnBoot = true; # Powers up the default Bluetooth controller on boot
-    settings = {
-      General = {
-        Experimental = true; # Optional: enables newer Bluetooth capabilities
-        FastConnectable = true; # Optional: faster reconnection
-      };
-      Policy = {
-        AutoEnable = true; # Automatically power up controllers
-      };
-    };
   };
-
-  # Ensure KDE Plasma's BlueDevil Bluetooth integration is installed (usually present by default)
-  environment.systemPackages = with pkgs; [
-    kdePackages.bluedevil # KDE Plasma Bluetooth applet/backend
-  ];
 }
