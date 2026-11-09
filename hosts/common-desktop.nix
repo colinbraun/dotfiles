@@ -6,6 +6,7 @@
 {
   imports = [
     ./common-base.nix
+    ../system/wm/wayland.nix
   ];
 
   services = {
